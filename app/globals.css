@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap");
+
+:root {
+  --bg-dark: #0D0C0B;
+  --bg-dark-2: #161513;
+  --bg-light: #F0EAE2;
+  --bg-light-2: #FFFFFF;
+  --text-dark: #F0EBE5;
+  --text-muted: #7A7470;
+  --text-black: #1A1917;
+  --border-dark: #252220;
+  --border-light: #E0DAD4;
+
+  --red: #F62624;
+  --teal: #73FDFC;
+  --lime: #2BFE78;
+  --gold: #FAD334;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-dark);
+  font-family: "Inter", sans-serif;
+}
+
+/* Dot grid background for dark sections */
+.dot-grid {
+  background-image: radial-gradient(circle, #2E2A27 1.5px, transparent 1.5px);
+  background-size: 20px 20px;
+}
+
+/* Glow classes */
+.glow-red {
+  box-shadow: 0 0 8px 2px rgba(246, 38, 36, 0.55),
+              0 0 22px 6px rgba(246, 38, 36, 0.2);
+}
+
+.glow-teal {
+  box-shadow: 0 0 8px 2px rgba(115, 253, 252, 0.55),
+              0 0 22px 6px rgba(115, 253, 252, 0.2);
+}
+
+.glow-lime {
+  box-shadow: 0 0 8px 2px rgba(43, 254, 120, 0.55),
+              0 0 22px 6px rgba(43, 254, 120, 0.2);
+}
+
+.glow-gold {
+  box-shadow: 0 0 8px 2px rgba(250, 211, 52, 0.55),
+              0 0 22px 6px rgba(250, 211, 52, 0.2);
+}
+
+.glow-white {
+  box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.45),
+              0 0 22px 6px rgba(255, 255, 255, 0.15);
+}
+
+/* Marquee animation for social proof */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+/* Counter animation */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
