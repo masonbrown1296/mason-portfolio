@@ -25,6 +25,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
   const nextProject = projects[(currentIndex + 1) % projects.length]
   const isCRAM = project.slug === 'cram'
   const isGamification = project.slug === 'gamification-redesign'
+  const isHealthcare = project.slug === 'healthcare-buyer-intelligence'
 
   return (
     <>
@@ -86,6 +87,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
         color={color}
         isCRAM={isCRAM}
         isGamification={isGamification}
+        isHealthcare={isHealthcare}
       />
 
       {/* ════════ CRAM AVAILABILITY NOTE ════════ */}

@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Health System Buyer Personas — Digital & Strategic Engine</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #0C0C0E;
+  --surface: #141418;
+  --surface-raised: #1C1C22;
+  --text: #F0ECE6;
+  --text-muted: #8A8690;
+  --text-dim: #5A5660;
+  --accent: #82FF1C;
+  --accent-dim: rgba(130, 255, 28, 0.15);
+  --engine-digital: #E8883C;
+  --engine-digital-dim: rgba(232, 136, 60, 0.12);
+  --engine-digital-glow: rgba(232, 136, 60, 0.06);
+  --border: rgba(255, 255, 255, 0.06);
+  --border-accent: rgba(130, 255, 28, 0.2);
+  --serif: 'Source Serif 4', Georgia, serif;
+  --sans: 'Plus Jakarta Sans', -apple-system, sans-serif;
+  --radius: 12px;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  overflow-x: auto;
+  overflow-y: hidden;
+  height: 100%;
+  scrollbar-width: none;
+}
+html::-webkit-scrollbar { display: none; }
+
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--text);
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  overflow: visible;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ================================ */
+/* SLIDE SYSTEM — STRICT 100vh     */
+/* ================================ */
+
+.slide {
+  flex: 0 0 100vw;
+  width: 100vw;
+  height: 100vh;
+  scroll-snap-align: start;
+  overflow: hidden;
+  position: relative;
+}
+
+.slide-inner {
+  width: 100%;
+  height: 100%;
+  padding: 40px 52px 48px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ================================ */
+/* NAVIGATION                       */
+/* ================================ */
+
+.nav-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  z-index: 100;
+  background: linear-gradient(to top, rgba(12,12,14,0.95) 60%, transparent);
+  padding-bottom: 12px;
+}
+
+.nav-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-dim);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  padding: 0;
+}
+.nav-dot:hover { background: var(--text-muted); }
+.nav-dot.active {
+  background: var(--accent);
+  width: 24px;
+  border-radius: 4px;
+  box-shadow: 0 0 12px rgba(130, 255, 28, 0.4);
+}
+.nav-dot.engine-dot.active {
+  background: var(--engine-digital);
+  box-shadow: 0 0 12px rgba(232, 136, 60, 0.5);
+}
+
+.slide-counter {
+  position: fixed;
+  bottom: 14px;
+  right: 24px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-dim);
+  z-index: 101;
+  letter-spacing: 1px;
+}
+
+.swipe-hint {
+  position: fixed;
+  bottom: 52px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--text-dim);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  animation: fadeHint 5s ease forwards;
+}
+.swipe-hint svg { animation: slideArrow 1.5s ease-in-out infinite; }
+@keyframes slideArrow { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(6px); } }
+@keyframes fadeHint { 0% { opacity: 1; } 70% { opacity: 1; } 100% { opacity: 0; pointer-events: none; } }
+
+/* ================================ */
+/* TITLE SLIDE                      */
+/* ================================ */
+
+.slide-title {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.slide-title .overline {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.slide-title h1 {
+  font-family: var(--serif);
+  font-size: clamp(40px, 6vw, 72px);
+  font-weight: 700;
+  line-height: 1.05;
+  color: var(--text);
+  max-width: 740px;
+}
+
+.slide-title .subtitle {
+  font-size: 15px;
+  color: var(--text-muted);
+  margin-top: 16px;
+  line-height: 1.6;
+  max-width: 500px;
+}
+
+.meta-bar {
+  display: flex;
+  gap: 40px;
+  margin-top: 36px;
+  padding-top: 28px;
+  border-top: 1px solid var(--border);
+}
+.meta-item { text-align: center; }
+.meta-item .num {
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--accent);
+}
+.meta-item .label {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-top: 2px;
+}
+
+/* ================================ */
+/* SECTION HEADERS                  */
+/* ================================ */
+
+.section-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 6px;
+  flex-shrink: 0;
+}
+
+.slide-heading {
+  font-family: var(--serif);
+  font-size: clamp(24px, 3vw, 34px);
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 4px;
+  flex-shrink: 0;
+}
+
+.slide-subheading {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.55;
+  max-width: 580px;
+  margin-bottom: 12px;
+  flex-shrink: 0;
+}
+
+.engine-badge {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.engine-badge.digital {
+  background: var(--engine-digital-dim);
+  color: var(--engine-digital);
+  border: 1px solid rgba(232, 136, 60, 0.2);
+}
+
+/* ================================ */
+/* METHODOLOGY                      */
+/* ================================ */
+
+.method-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  flex: 1;
+  min-height: 0;
+}
+
+.method-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px 22px 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.3s;
+}
+.method-card:hover { border-color: var(--border-accent); }
+
+.method-card .step-num {
+  font-family: var(--serif);
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--accent);
+  opacity: 0.15;
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  line-height: 1;
+}
+
+.method-card h3 {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.method-card p {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--text-muted);
+  flex: 1;
+}
+
+.source-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 10px;
+}
+.source-tag {
+  font-size: 9px;
+  letter-spacing: 0.5px;
+  padding: 3px 8px;
+  border-radius: 20px;
+  background: var(--accent-dim);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ================================ */
+/* PRESSURES — FILL VIEWPORT        */
+/* ================================ */
+
+.pressure-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  flex: 1;
+  min-height: 0;
+}
+
+.pressure-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: all 0.3s;
+}
+.pressure-card:hover {
+  border-color: rgba(255, 90, 90, 0.25);
+  transform: translateY(-2px);
+}
+
+.pressure-card .pressure-icon {
+  font-size: 36px;
+  margin-bottom: 18px;
+}
+
+.pressure-card h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+
+.pressure-card p {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+/* ================================ */
+/* FOUR ENGINES                     */
+/* ================================ */
+
+.engines-layout {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 0;
+}
+
+.engine-strip {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  flex: 1;
+  min-height: 0;
+  transition: border-color 0.3s;
+}
+.engine-strip:hover { border-color: rgba(255,255,255,0.1); }
+.engine-strip.active {
+  border-color: var(--engine-digital);
+  box-shadow: 0 0 30px var(--engine-digital-glow);
+}
+
+.engine-label {
+  padding: 16px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+}
+.engine-label.digital { background: linear-gradient(135deg, rgba(232,136,60,0.15), rgba(232,136,60,0.04)); }
+.engine-label.value { background: linear-gradient(135deg, rgba(72,160,220,0.15), rgba(72,160,220,0.04)); }
+.engine-label.operations { background: linear-gradient(135deg, rgba(168,85,220,0.15), rgba(168,85,220,0.04)); }
+.engine-label.care { background: linear-gradient(135deg, rgba(80,200,140,0.15), rgba(80,200,140,0.04)); }
+
+.engine-label h3 {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.engine-label.digital h3 { color: #E8883C; }
+.engine-label.value h3 { color: #48A0DC; }
+.engine-label.operations h3 { color: #A855DC; }
+.engine-label.care h3 { color: #50C88C; }
+
+.engine-label .question {
+  font-family: var(--serif);
+  font-size: 14px;
+  font-style: italic;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.engine-roles {
+  background: var(--surface);
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.role-chip {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 20px;
+  background: var(--surface-raised);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+}
+
+/* ================================ */
+/* ENGINE INTRO — 2 COLUMN          */
+/* ================================ */
+
+.engine-intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  flex: 1;
+  min-height: 0;
+  align-items: center;
+}
+
+.engine-intro-left h2 {
+  font-family: var(--serif);
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+.engine-intro-left h2 span { color: var(--engine-digital); }
+
+.engine-intro-left .engine-desc {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--text-muted);
+  max-width: 440px;
+}
+
+.tension-header {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--engine-digital);
+  margin-bottom: 12px;
+}
+
+.tension-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  display: grid;
+  grid-template-columns: 1fr 50px 1fr;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.tension-pole { text-align: center; }
+.tension-pole .pole-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 2px;
+}
+.tension-pole .pole-desc {
+  font-size: 11px;
+  color: var(--text-dim);
+  line-height: 1.35;
+}
+
+.tension-bar {
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(to right, var(--engine-digital), var(--text-dim));
+  border-radius: 2px;
+  position: relative;
+}
+.tension-bar::before, .tension-bar::after {
+  content: '';
+  position: absolute;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.tension-bar::before { left: -3px; background: var(--engine-digital); }
+.tension-bar::after { right: -3px; background: var(--text-dim); }
+
+/* ================================ */
+/* COMPARISON TABLE                 */
+/* ================================ */
+
+.persona-compare {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.compare-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  table-layout: fixed;
+}
+
+.compare-table thead th {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--engine-digital);
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 2px solid var(--engine-digital);
+  background: var(--surface);
+}
+.compare-table thead th:first-child {
+  color: var(--text-dim);
+  width: 120px;
+  border-bottom-color: var(--border);
+}
+
+.compare-table tbody td {
+  padding: 14px 16px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.compare-table tbody td:first-child {
+  font-weight: 700;
+  color: var(--text);
+  font-size: 11px;
+  letter-spacing: 0.3px;
+}
+.compare-table tbody tr:hover td { background: var(--surface); }
+
+/* ================================ */
+/* PERSONA CARDS                    */
+/* ================================ */
+
+.persona-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+  flex-shrink: 0;
+}
+
+.persona-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  flex-shrink: 0;
+}
+.persona-icon.digital {
+  background: var(--engine-digital-dim);
+  border: 1px solid rgba(232, 136, 60, 0.25);
+}
+
+.persona-header-text h2 {
+  font-family: var(--serif);
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.15;
+}
+.persona-header-text .persona-subtitle {
+  font-size: 13px;
+  color: var(--engine-digital);
+  font-style: italic;
+  font-family: var(--serif);
+}
+
+.persona-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  flex: 1;
+  min-height: 0;
+}
+
+.persona-grid-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+  flex: 1;
+  min-height: 0;
+}
+
+.persona-section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.persona-section h4 {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--engine-digital);
+  margin-bottom: 10px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.persona-section p, .persona-section li {
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.persona-section ul { list-style: none; padding: 0; }
+.persona-section li {
+  padding: 3px 0 3px 12px;
+  position: relative;
+}
+.persona-section li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--engine-digital);
+  opacity: 0.5;
+}
+
+.persona-section.highlight {
+  background: var(--engine-digital-dim);
+  border-color: rgba(232, 136, 60, 0.2);
+}
+.persona-section.highlight h4 { color: var(--text); }
+.persona-section.highlight p, .persona-section.highlight li { color: var(--text); }
+
+.titles-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.title-tag {
+  font-size: 10px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: var(--surface-raised);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  font-weight: 500;
+}
+
+.rel-group { margin-bottom: 8px; }
+.rel-group .rel-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 2px;
+}
+.rel-group p { font-size: 12px; color: var(--text-muted); line-height: 1.45; }
+
+.persona-overview-text {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-muted);
+  max-width: 640px;
+  margin-bottom: 16px;
+  flex-shrink: 0;
+}
+
+/* spacer between stacked grids */
+.grid-gap { height: 12px; flex-shrink: 0; }
+
+/* ================================ */
+/* RESPONSIVE                       */
+/* ================================ */
+
+@media (max-width: 900px) {
+  .slide-inner { padding: 28px 24px 48px; }
+  .method-grid, .persona-grid { grid-template-columns: 1fr; }
+  .persona-grid-3 { grid-template-columns: 1fr; }
+  .engine-strip { grid-template-columns: 1fr; }
+  .engine-intro { grid-template-columns: 1fr; gap: 24px; }
+  .pressure-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1: TITLE -->
+<section class="slide" id="s0">
+  <div class="slide-inner slide-title">
+    <div class="overline">Buyer Intelligence Program</div>
+    <h1>Health System Buyer Personas</h1>
+    <p class="subtitle">A research-driven intelligence library mapping the executive stakeholders, competing pressures, and decision architectures inside complex health system buying cycles.</p>
+    <div class="meta-bar">
+      <div class="meta-item"><div class="num">12</div><div class="label">Personas</div></div>
+      <div class="meta-item"><div class="num">4</div><div class="label">Engines</div></div>
+      <div class="meta-item"><div class="num">150+</div><div class="label">Source Reports</div></div>
+      <div class="meta-item"><div class="num">120+</div><div class="label">Job Postings Analyzed</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 2: METHODOLOGY -->
+<section class="slide" id="s1">
+  <div class="slide-inner">
+    <div class="section-label">Research Methodology</div>
+    <div class="slide-heading">Four-Step Intelligence Process</div>
+    <div class="slide-subheading">Integrating market intelligence, real-world job data, and Gartner frameworks into actionable buyer profiles.</div>
+    <div class="method-grid">
+      <div class="method-card">
+        <div class="step-num">01</div>
+        <h3>Targeted Discovery</h3>
+        <p>Curated high-impact primary research, executive surveys, and industry outlooks spanning 2020 to 2025. Leveraged 150+ reports from high-authority stakeholders to ensure data integrity.</p>
+        <div class="source-tags">
+          <span class="source-tag">WittKieffer</span>
+          <span class="source-tag">HIMSS</span>
+          <span class="source-tag">HFMA</span>
+          <span class="source-tag">Bain & Co.</span>
+          <span class="source-tag">KLAS</span>
+          <span class="source-tag">Deloitte</span>
+          <span class="source-tag">Chartis</span>
+        </div>
+      </div>
+      <div class="method-card">
+        <div class="step-num">02</div>
+        <h3>Synthesis & Verification</h3>
+        <p>Combined insights from 10-15 distinct source documents per persona to establish baseline trends. Cross-referenced findings against 10-12 verified job postings per role to validate current market requirements, reporting structures, and hiring criteria.</p>
+      </div>
+      <div class="method-card">
+        <div class="step-num">03</div>
+        <h3>Framework Application</h3>
+        <p>Structured insights into actionable profiles using Gartner's Buyer Persona and Job-Based Buying Journey Template. Mapped attributes including job titles, relationships, competencies, goals, barriers, decision criteria, and preferred content types.</p>
+      </div>
+      <div class="method-card">
+        <div class="step-num">04</div>
+        <h3>Narrative Integration</h3>
+        <p>Contextualized personas within the broader health system environment using the Four Engines model. Converted static profiles into a full narrative highlighting cross-functional tensions and strategic drivers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 3: LANDSCAPE PRESSURES -->
+<section class="slide" id="s2">
+  <div class="slide-inner">
+    <div class="section-label">Market Context</div>
+    <div class="slide-heading">Every Leader Operates in a Crucible of Unprecedented Pressure</div>
+    <div class="slide-subheading">Five forces shape every enterprise decision. Understanding them is table stakes.</div>
+    <div class="pressure-grid">
+      <div class="pressure-card">
+        <div class="pressure-icon">📉</div>
+        <h3>Financial Instability</h3>
+        <p>Maintaining financial viability amid high-cost operating models, inflationary pressures, and constrained reimbursement.</p>
+      </div>
+      <div class="pressure-card">
+        <div class="pressure-icon">👥</div>
+        <h3>Workforce Crisis</h3>
+        <p>Persistent staffing shortages, high levels of clinician burnout, and escalating labor expenses destabilizing care delivery.</p>
+      </div>
+      <div class="pressure-card">
+        <div class="pressure-icon">⚙️</div>
+        <h3>Operational Gridlock</h3>
+        <p>Capacity constraints, patient throughput limitations, and the challenge of unifying operations after M&A activity.</p>
+      </div>
+      <div class="pressure-card">
+        <div class="pressure-icon">🔒</div>
+        <h3>Digital & Security Threats</h3>
+        <p>Balancing digital transformation with the mission-critical need to protect patient data from evolving cyber threats.</p>
+      </div>
+      <div class="pressure-card">
+        <div class="pressure-icon">🌪</div>
+        <h3>Landscape Volatility</h3>
+        <p>Growing competition from new entrants (retail, PE) and rapidly evolving regulatory requirements creating uncertainty.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 4: THE FOUR ENGINES -->
+<section class="slide" id="s3">
+  <div class="slide-inner">
+    <div class="section-label">The Four Engines Framework</div>
+    <div class="slide-heading">A Command Center, Not a Hierarchy</div>
+    <div class="slide-subheading">Every major decision requires alignment across leaders with fundamentally incompatible success metrics.</div>
+    <div class="engines-layout">
+      <div class="engine-strip active">
+        <div class="engine-label digital"><h3>Digital & Strategic Engine</h3><div class="question">Where are we going, and how will we get there safely?</div></div>
+        <div class="engine-roles"><span class="role-chip">Strategic Tech Leadership</span><span class="role-chip">Strategy Executive</span><span class="role-chip">Information Security Leadership</span></div>
+      </div>
+      <div class="engine-strip">
+        <div class="engine-label value"><h3>Value & Viability Engine</h3><div class="question">Will we be financially viable tomorrow?</div></div>
+        <div class="engine-roles"><span class="role-chip">Chief Financial Officer</span><span class="role-chip">Revenue Cycle Leadership</span><span class="role-chip">Population Health Leadership</span></div>
+      </div>
+      <div class="engine-strip">
+        <div class="engine-label operations"><h3>Operations & Access Engine</h3><div class="question">Can we run efficiently today?</div></div>
+        <div class="engine-roles"><span class="role-chip">Operations Leadership</span><span class="role-chip">Patient Access Leadership</span><span class="role-chip">Health System Pharmacy Leadership</span></div>
+      </div>
+      <div class="engine-strip">
+        <div class="engine-label care"><h3>Care & Quality Engine</h3><div class="question">Are we delivering safe, quality care while reducing burnout?</div></div>
+        <div class="engine-roles"><span class="role-chip">Chief Clinical Executive</span><span class="role-chip">Clinical Informatics Leadership</span><span class="role-chip">Medical School Executive</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 5: ENGINE INTRO — DIGITAL & STRATEGIC -->
+<section class="slide" id="s4">
+  <div class="slide-inner">
+    <div class="engine-badge digital">Digital & Strategic Engine</div>
+    <div class="engine-intro">
+      <div class="engine-intro-left">
+        <h2>The <span>Digital & Strategic</span> Engine</h2>
+        <p class="engine-desc">This engine shapes the future and protects the organization as it evolves. Its leaders connect market trends, technology, and security into a single direction. They are responsible for the platforms that enable scale, the strategy that guides growth, and the defenses that protect the system from digital threats.</p>
+      </div>
+      <div>
+        <div class="tension-header">Key Tensions</div>
+        <div class="tension-card">
+          <div class="tension-pole"><div class="pole-label">Innovation</div><div class="pole-desc">Investing in new digital capabilities</div></div>
+          <div class="tension-bar"></div>
+          <div class="tension-pole"><div class="pole-label">Stability</div><div class="pole-desc">Maintaining legacy infrastructure</div></div>
+        </div>
+        <div class="tension-card">
+          <div class="tension-pole"><div class="pole-label">Agility</div><div class="pole-desc">Moving quickly on new initiatives</div></div>
+          <div class="tension-bar"></div>
+          <div class="tension-pole"><div class="pole-label">Governance</div><div class="pole-desc">Ensuring proper oversight and security</div></div>
+        </div>
+        <div class="tension-card">
+          <div class="tension-pole"><div class="pole-label">Growth</div><div class="pole-desc">Pursuing strategic partnerships</div></div>
+          <div class="tension-bar"></div>
+          <div class="tension-pole"><div class="pole-label">Risk</div><div class="pole-desc">Managing cybersecurity and integration risks</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 6: LEADERS COMPARISON TABLE -->
+<section class="slide" id="s5">
+  <div class="slide-inner">
+    <div class="engine-badge digital">Digital & Strategic Engine</div>
+    <div class="section-label">Persona Comparison</div>
+    <div class="slide-heading">The Leaders Building the Future</div>
+    <div class="persona-compare">
+      <table class="compare-table">
+        <thead><tr><th></th><th>Strategic Tech Leadership</th><th>Strategy Executive</th><th>Info Security Leadership</th></tr></thead>
+        <tbody>
+          <tr><td>Core Mandate</td><td>Makes sure technology works for the system, deciding what gets bought and how systems fit together.</td><td>Focused on where the organization is going in 5+ years, connecting market trends and digital strategy.</td><td>Protects patient data and keeps systems running, balancing security, compliance, and usability.</td></tr>
+          <tr><td>Top Priority</td><td>Ensure IT initiatives deliver measurable clinical, operational, and financial value.</td><td>Position the organization for sustained, long-term success.</td><td>Protect from evolving cyber threats, particularly cloud and account compromise.</td></tr>
+          <tr><td>Biggest Fear</td><td>Disparate legacy systems and limited EHR interoperability.</td><td>Competition from national insurers, PE, and retail health entrants.</td><td>Insufficient cybersecurity expertise and incomplete device inventories.</td></tr>
+          <tr><td>Trusted Metric</td><td>Demonstrated ROI from IT initiatives.</td><td>Revenue growth and market share.</td><td>Reduction in major cybersecurity incidents.</td></tr>
+          <tr><td>Decision Criteria</td><td>Proven EHR integration; standardized, scalable solutions.</td><td>Strategic alignment with tangible, defensible ROI.</td><td>Effectiveness against ransomware/phishing; minimal workflow disruption.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 7: STRATEGIC TECH — PROFILE -->
+<section class="slide" id="s6">
+  <div class="slide-inner">
+    <div class="engine-badge digital">Digital & Strategic Engine</div>
+    <div class="persona-header">
+      <div class="persona-icon digital">⚡</div>
+      <div class="persona-header-text"><h2>Strategic Tech Leadership</h2><div class="persona-subtitle">The Architect of Enterprise Value Through Technology</div></div>
+    </div>
+    <p class="persona-overview-text">This is the executive who makes sure technology actually works for the health system, not just on paper but in real clinical and operational workflows. They decide what gets bought, how systems fit together, and whether technology makes work easier or harder.</p>
+    <div class="persona-grid">
+      <div class="persona-section"><h4>What Keeps Them Up at Night</h4><ul><li>Tension between maintaining legacy infrastructure and modernizing the tech stack</li><li>Cybersecurity threats and patient data privacy risks</li><li>Recruiting, retaining, and funding skilled IT talent</li></ul></div>
+      <div class="persona-section"><h4>What Triggers Action</h4><ul><li><strong>Major System Implementations:</strong> Mandates to modernize core platforms</li><li><strong>M&A Integration:</strong> Consolidation of disparate systems</li><li>Directives to reduce operating costs and vendor support fees</li></ul></div>
+      <div class="persona-section"><h4>How They Evaluate Solutions</h4><ul><li>Tight, proven integration with the existing EHR environment</li><li>Alignment with enterprise IT strategy; desire to reduce vendor sprawl</li><li>Clear, demonstrable ROI and minimal disruption to clinical workflows</li></ul></div>
+      <div class="persona-section highlight"><h4>Engagement Implications</h4><ul><li>Lead with EHR integration and interoperability</li><li>Show understanding of their technology roadmap</li><li>Be prepared to discuss security, scalability, and total cost of ownership</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 8: STRATEGIC TECH — ORG & METRICS -->
+<section class="slide" id="s7">
+  <div class="slide-inner">
+    <div class="engine-badge digital">Digital & Strategic Engine</div>
+    <div class="persona-header">
+      <div class="persona-icon digital">⚡</div>
+      <div class="persona-header-text"><h2>Strategic Tech Leadership</h2><div class="persona-subtitle">Organizational Context & Success Metrics</div></div>
+    </div>
+    <div class="persona-grid-3">
+      <div class="persona-section"><h4>Common Titles</h4><div class="titles-row"><span class="title-tag">CIO</span><span class="title-tag">SVP & CIO</span><span class="title-tag">CDIO</span><span class="title-tag">CDO</span><span class="title-tag">CTO</span><span class="title-tag">CHIO</span><span class="title-tag">VP of IT</span></div></div>
+      <div class="persona-section"><h4>Working Relationships</h4><div class="rel-group"><div class="rel-label">Reports to</div><p>CEO, COO, or CFO (varies by structure)</p></div><div class="rel-group"><div class="rel-label">Supervises</div><p>CISO, CAO, PMO, CMIO, CDAO, Chief AI Officer</p></div><div class="rel-group"><div class="rel-label">Collaborators</div><p>Executive leadership, clinical leadership, CSO, vendors</p></div></div>
+      <div class="persona-section"><h4>Key Committees</h4><ul><li>IT Governance Committee</li><li>Enterprise Architecture Review Board</li><li>Digital Transformation Steering Committee</li><li>Capital Planning Committee</li></ul></div>
+    </div>
+    <div class="grid-gap"></div>
+    <div class="persona-grid-3">
+      <div class="persona-section"><h4>Goals & Priorities</h4><ul><li>Deliver measurable value from IT initiatives</li><li>Execute major system implementations</li><li>Strengthen cybersecurity posture</li><li>Improve interoperability across systems</li><li>Support revenue cycle through technology</li><li>Lead cloud migration and consolidation</li></ul></div>
+      <div class="persona-section"><h4>Success Metrics</h4><ul><li>ROI from IT initiatives and investments</li><li>Reduction in operating costs from IT optimization</li><li>Revenue cycle performance improvements</li><li>Cybersecurity posture and risk reduction</li><li>Patient access and digital engagement</li><li>Burnout reduction linked to tech improvements</li></ul></div>
+      <div class="persona-section"><h4>Perceived Barriers</h4><ul><li>Disparate legacy systems and apps</li><li>Limited EHR integration across solutions</li><li>IT talent recruitment and retention</li><li>Competing capital priorities</li><li>Cybersecurity and AI adoption concerns</li><li>Constrained bandwidth and capacity</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 9: STRATEGIC TECH — DECISION ARCH -->
+<section class="slide" id="s8">
+  <div class="slide-inner">
+    <div class="engine-badge digital">Digital & Strategic Engine</div>
+    <div class="persona-header">
+      <div class="persona-icon digital">⚡</div>
+      <div class="persona-header-text"><h2>Strategic Tech Leadership</h2><div class="persona-subtitle">Decision Architecture & Content Preferences</div></div>
+    </div>
+    <div class="persona-grid">
+      <div class="persona-section"><h4>Decision Criteria</h4><ul><li>Clear, demonstrable return on investment</li><li>Proven success with comparable healthcare organizations</li><li>Alignment with enterprise IT strategy and broader goals</li><li>Tight integration with existing EHR environment</li><li>Desire to rationalize and reduce vendor count</li><li>Initial preference for existing vendors, particularly EHR partners</li><li>Minimal disruption to clinical and operational workflows</li></ul></div>
+      <div class="persona-section"><h4>Business Initiatives</h4><ul><li><strong>Leads:</strong> Digital transformation for patient care and operational efficiency</li><li><strong>Leads:</strong> Large-scale system implementations and optimization</li><li><strong>Leads:</strong> Cybersecurity maturity initiatives</li><li><strong>Participates:</strong> Organizational growth (M&A, joint ventures)</li><li><strong>Participates:</strong> Financial planning tied to tech investments</li><li><strong>Participates:</strong> Population health and value-based care initiatives</li></ul></div>
+      <div class="persona-section"><h4>Preferred Content Types</h4><ul><li>Product demonstrations and solution walkthroughs</li><li>Case studies, white papers, and solution briefs</li><li>Peer-focused executive briefings and roundtables</li></ul></div>
+      <div class="persona-section"><h4>Information Sources</h4><ul><li>Vendor websites and technical documentation</li><li>In-person conferences and executive forums</li><li>Healthcare and technology publications</li><li>Peer networks and trusted influencers</li><li>Educational webinars and virtual briefings</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 10: STRATEGY EXECUTIVE — PROFILE -->
+<section class="slide" id="s9">
+  <div class="slide-inner">
+    <div class="engine-badge digital">Digital & Strategic Engine</div>
+    <div class="persona-header">
+      <div class="persona-icon digital">🧭</div>
+      <div class="persona-header-text"><h2>Strategy Executive</h2><div class="persona-subtitle">The Navigator of Future Growth</div></div>
+    </div>
+    <p class="persona-overview-text">This role is focused on where the organization is going, not just next year, but five years out. They connect market trends, growth opportunities, digital strategy, and financial realities into a single direction. Most of what they do influences decisions, even if they are not the one signing the contract.</p>
+    <div class="persona-grid">
+      <div class="persona-section"><h4>What Keeps Them Up at Night</h4><ul><li>Growing competition from national insurers, PE, and retail health</li><li>Operating with tight budgets amid pressure to invest in new technology</li><li>Difficulty unifying culture and operations following M&A activity</li></ul></div>
+      <div class="persona-section"><h4>What Triggers Action</h4><ul><li><strong>Market Expansion:</strong> Mergers, acquisitions, or service line expansion</li><li><strong>Competitive Threats:</strong> New competitors stealing market share</li><li><strong>Strategic Planning:</strong> Long-range cycles requiring new revenue models</li></ul></div>
+      <div class="persona-section"><h4>How They Evaluate Solutions</h4><ul><li>Clear strategic alignment with enterprise business outcomes</li><li>Tangible, defensible ROI tied to strategic priorities</li><li>Ability to scale across diverse service lines and operating models</li></ul></div>
+      <div class="persona-section highlight"><h4>Engagement Implications</h4><ul><li>Align value proposition with long-term competitive positioning</li><li>Provide "board-ready" strategy briefs and investment cases</li><li>Demonstrate how the solution enables scalable growth or efficiency</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 11: STRATEGY EXEC — ORG & METRICS -->
+<section class="slide" id="s10">
+  <div class="slide-inner">
+    <div class="engine-badge digital">Digital & Strategic Engine</div>
+    <div class="persona-header">
+      <div class="persona-icon digital">🧭</div>
+      <div class="persona-header-text"><h2>Strategy Executive</h2><div class="persona-subtitle">Organizational Context & Success Metrics</div></div>
+    </div>
+    <div class="persona-grid-3">
+      <div class="persona-section"><h4>Common Titles</h4><div class="titles-row"><span class="title-tag">CSO</span><span class="title-tag">SVP/EVP of Strategy</span><span class="title-tag">VP Strategy & Growth</span><span class="title-tag">Chief Transformation Officer</span></div></div>
+      <div class="persona-section"><h4>Working Relationships</h4><div class="rel-group"><div class="rel-label">Reports to</div><p>President or CEO</p></div><div class="rel-group"><div class="rel-label">Supervises</div><p>Strategic planning, business development, performance improvement, analytics</p></div><div class="rel-group"><div class="rel-label">Collaborators</div><p>Board of directors, CFO, COO, CTO, CNO, CMO</p></div></div>
+      <div class="persona-section"><h4>Key Committees</h4><ul><li>Executive Leadership Team</li><li>Strategic Planning Committee</li><li>M&A / Growth Steering Committee</li><li>Service Line Expansion Councils</li></ul></div>
+    </div>
+    <div class="grid-gap"></div>
+    <div class="persona-grid-3">
+      <div class="persona-section"><h4>Goals & Priorities</h4><ul><li>Position for sustained, long-term success</li><li>Improve access to care across service lines</li><li>Drive operational efficiency in care delivery</li><li>Execute strategic cost management</li><li>Define and advance enterprise AI strategy</li><li>Retain and grow the patient base</li></ul></div>
+      <div class="persona-section"><h4>Success Metrics</h4><ul><li>ROI from enterprise strategic initiatives</li><li>Revenue growth and margin performance</li><li>Market share and competitive positioning</li><li>Operational efficiency and productivity gains</li><li>Patient outcomes and quality/safety scores</li><li>Consumer engagement and trust</li></ul></div>
+      <div class="persona-section"><h4>Perceived Barriers</h4><ul><li>Constrained budgets with pressure to invest</li><li>Volatile supplemental funding (Medicaid, 340B)</li><li>Staffing shortages and clinician burnout</li><li>Post-M&A culture and ops unification</li><li>Clinician skepticism toward new tech</li><li>Rapidly evolving regulatory requirements</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 12: INFO SECURITY — PROFILE -->
+<section class="slide" id="s11">
+  <div class="slide-inner">
+    <div class="engine-badge digital">Digital & Strategic Engine</div>
+    <div class="persona-header">
+      <div class="persona-icon digital">🛡</div>
+      <div class="persona-header-text"><h2>Information Security Leadership</h2><div class="persona-subtitle">The Shield Against Digital Threats</div></div>
+    </div>
+    <p class="persona-overview-text">This is the executive responsible for protecting patient data and keeping systems running in the face of constant cyber threats. They balance security, compliance, and usability while preparing for incidents everyone hopes will not happen.</p>
+    <div class="persona-grid">
+      <div class="persona-section"><h4>What Keeps Them Up at Night</h4><ul><li>Ransomware, cloud compromise, and third-party risk management</li><li>Incomplete asset inventories, particularly for medical devices</li><li>Perception of the CISO as a blocker rather than a business partner</li></ul></div>
+      <div class="persona-section"><h4>What Triggers Action</h4><ul><li><strong>Security Incidents:</strong> A breach that elevates risk awareness</li><li><strong>Audit Failures:</strong> Poor findings from compliance audits</li><li>Introduction of new risks via cloud migration or AI adoption</li></ul></div>
+      <div class="persona-section"><h4>How They Evaluate Solutions</h4><ul><li>Proven effectiveness against top threats (ransomware, phishing)</li><li>Alignment with NIST and HPH Cybersecurity Performance Goals</li><li>Minimal disruption to clinical and operational workflows</li></ul></div>
+      <div class="persona-section highlight"><h4>Engagement Implications</h4><ul><li>Lead with security architecture, compliance, and risk reduction</li><li>Prove that security controls will not degrade operational usability</li><li>Be transparent about third-party security and audit support</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 13: INFO SECURITY — ORG & DECISION -->
+<section class="slide" id="s12">
+  <div class="slide-inner">
+    <div class="engine-badge digital">Digital & Strategic Engine</div>
+    <div class="persona-header">
+      <div class="persona-icon digital">🛡</div>
+      <div class="persona-header-text"><h2>Information Security Leadership</h2><div class="persona-subtitle">Organizational Context & Decision Architecture</div></div>
+    </div>
+    <div class="persona-grid-3">
+      <div class="persona-section"><h4>Common Titles</h4><div class="titles-row"><span class="title-tag">CISO</span><span class="title-tag">Director of Info Security</span><span class="title-tag">VP of Cybersecurity</span></div></div>
+      <div class="persona-section"><h4>Working Relationships</h4><div class="rel-group"><div class="rel-label">Reports to</div><p>CIO (in high-risk orgs: direct to CEO)</p></div><div class="rel-group"><div class="rel-label">Dotted Line</div><p>Audit Committee / Board</p></div><div class="rel-group"><div class="rel-label">Supervises</div><p>Security Ops, GRC, IAM, Third-Party Risk</p></div></div>
+      <div class="persona-section"><h4>Key Committees</h4><ul><li>Cybersecurity / Risk Committee</li><li>IT Governance</li><li>Incident Response Council</li><li>Board Audit or Risk Committee</li></ul></div>
+    </div>
+    <div class="grid-gap"></div>
+    <div class="persona-grid">
+      <div class="persona-section"><h4>Decision Criteria</h4><ul><li>Proven effectiveness against top threat vectors</li><li>Alignment with NIST, HPH CPGs, and HIPAA requirements</li><li>Minimal disruption to clinical workflows</li><li>Strong vendor security posture and audit transparency</li><li>Integration with existing security stack and SIEM</li></ul></div>
+      <div class="persona-section"><h4>Perceived Barriers</h4><ul><li>Insufficient in-house cybersecurity expertise</li><li>Incomplete asset inventories for connected devices</li><li>Expanding attack surface from cloud and IoMT</li><li>Budget constraints competing with clinical priorities</li><li>Difficulty quantifying security ROI for the board</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- NAV & COUNTER -->
+<div class="nav-bar" id="navDots"></div>
+<div class="slide-counter" id="slideCounter">1 / 13</div>
+<div class="swipe-hint">Swipe or scroll <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+const dotsContainer = document.getElementById('navDots');
+const counter = document.getElementById('slideCounter');
+const html = document.documentElement;
+const total = slides.length;
+const engineSlides = new Set([4,5,6,7,8,9,10,11,12]);
+
+slides.forEach((_, i) => {
+  const dot = document.createElement('button');
+  dot.className = 'nav-dot' + (engineSlides.has(i) ? ' engine-dot' : '');
+  dot.addEventListener('click', () => { slides[i].scrollIntoView({ behavior: 'smooth', inline: 'start' }); });
+  dotsContainer.appendChild(dot);
+});
+
+const dots = dotsContainer.querySelectorAll('.nav-dot');
+function updateNav() {
+  const active = Math.round(html.scrollLeft / window.innerWidth);
+  dots.forEach((d, i) => d.classList.toggle('active', i === active));
+  counter.textContent = (active + 1) + ' / ' + total;
+}
+html.addEventListener('scroll', updateNav);
+updateNav();
+
+document.addEventListener('keydown', (e) => {
+  const current = Math.round(html.scrollLeft / window.innerWidth);
+  if (e.key === 'ArrowRight' && current < total - 1) slides[current + 1].scrollIntoView({ behavior: 'smooth', inline: 'start' });
+  else if (e.key === 'ArrowLeft' && current > 0) slides[current - 1].scrollIntoView({ behavior: 'smooth', inline: 'start' });
+});
+</script>
+</body>
+</html>

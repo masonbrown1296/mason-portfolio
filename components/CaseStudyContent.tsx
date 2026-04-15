@@ -10,6 +10,7 @@ interface CaseStudyContentProps {
   color: string
   isCRAM: boolean
   isGamification: boolean
+  isHealthcare: boolean
 }
 
 const gamificationImages = [
@@ -39,7 +40,7 @@ function renderBlocks(blocks: ContentBlock[]) {
   })
 }
 
-export default function CaseStudyContent({ project, color, isCRAM, isGamification }: CaseStudyContentProps) {
+export default function CaseStudyContent({ project, color, isCRAM, isGamification, isHealthcare }: CaseStudyContentProps) {
   const data = caseStudies[project.slug]
 
   const context  = data?.context  ?? { heading: 'The situation',    blocks: [] }
@@ -98,6 +99,39 @@ export default function CaseStudyContent({ project, color, isCRAM, isGamificatio
           </div>
         </div>
       </section>
+
+      {/* ─── HEALTHCARE: Persona Magazine ─── */}
+      {isHealthcare && (
+        <section className="dot-grid bg-[var(--bg-dark)] py-24">
+          <div className="max-w-[1200px] mx-auto px-6 md:px-12">
+            <FadeIn>
+              <SectionLabel text="The Deliverable" dotColor={color} />
+              <h2 className="font-display font-extrabold text-3xl md:text-[40px] leading-[1.1] tracking-[-0.02em] text-[var(--text-dark)] mb-8">
+                Explore the persona library.
+              </h2>
+              <div className="rounded-2xl overflow-hidden border border-[#252220]">
+                <iframe
+                  src="/buyer-personas-magazine.html"
+                  className="w-full"
+                  style={{ height: '600px', border: 'none', display: 'block' }}
+                  title="Health System Buyer Personas"
+                />
+              </div>
+              <div className="flex items-center justify-between mt-3 px-1">
+                <p className="text-xs font-body text-[var(--text-muted)]">13 slides · swipe or use arrow keys to navigate</p>
+                <a
+                  href="/buyer-personas-magazine.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs font-body text-[var(--text-muted)] hover:text-[var(--text-dark)] transition-colors"
+                >
+                  Open full screen →
+                </a>
+              </div>
+            </FadeIn>
+          </div>
+        </section>
+      )}
 
       {/* ─── GAMIFICATION: Image Gallery ─── */}
       {isGamification && (
