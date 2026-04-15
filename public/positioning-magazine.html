@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Repositioning for the Real Value Proposition — Experts Exchange</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #0C0C0E;
+  --surface: #141418;
+  --surface-raised: #1C1C22;
+  --text: #F0ECE6;
+  --text-muted: #8A8690;
+  --text-dim: #5A5660;
+  --accent: #82FF1C;
+  --accent-dim: rgba(130, 255, 28, 0.15);
+  --coral: #E8624A;
+  --coral-dim: rgba(232, 98, 74, 0.12);
+  --border: rgba(255, 255, 255, 0.06);
+  --serif: 'Source Serif 4', Georgia, serif;
+  --sans: 'Plus Jakarta Sans', -apple-system, sans-serif;
+  --radius: 12px;
+}
+html { scroll-behavior: smooth; scroll-snap-type: x mandatory; overflow-x: auto; overflow-y: hidden; height: 100%; scrollbar-width: none; }
+html::-webkit-scrollbar { display: none; }
+body { font-family: var(--sans); background: var(--bg); color: var(--text); height: 100vh; display: flex; flex-direction: row; overflow: visible; }
+body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 9999; }
+.slide { flex: 0 0 100vw; width: 100vw; height: 100vh; scroll-snap-align: start; overflow: hidden; position: relative; }
+.slide-inner { width: 100%; height: 100%; padding: 40px 52px 48px; display: flex; flex-direction: column; }
+
+.nav-bar { position: fixed; bottom: 0; left: 0; right: 0; height: 48px; display: flex; align-items: center; justify-content: center; gap: 6px; z-index: 100; background: linear-gradient(to top, rgba(12,12,14,0.95) 60%, transparent); padding-bottom: 12px; }
+.nav-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--text-dim); cursor: pointer; transition: all 0.3s ease; border: none; padding: 0; }
+.nav-dot:hover { background: var(--text-muted); }
+.nav-dot.active { background: var(--accent); width: 24px; border-radius: 4px; box-shadow: 0 0 12px rgba(130, 255, 28, 0.4); }
+.slide-counter { position: fixed; bottom: 14px; right: 24px; font-size: 11px; font-weight: 600; color: var(--text-dim); z-index: 101; letter-spacing: 1px; }
+.swipe-hint { position: fixed; bottom: 52px; left: 50%; transform: translateX(-50%); color: var(--text-dim); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; z-index: 100; display: flex; align-items: center; gap: 6px; animation: fadeHint 5s ease forwards; }
+.swipe-hint svg { animation: slideArrow 1.5s ease-in-out infinite; }
+@keyframes slideArrow { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(6px); } }
+@keyframes fadeHint { 0% { opacity: 1; } 70% { opacity: 1; } 100% { opacity: 0; pointer-events: none; } }
+
+.slide-title { justify-content: center; align-items: center; text-align: center; }
+.slide-title .overline { font-size: 10px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+.slide-title h1 { font-family: var(--serif); font-size: clamp(38px, 5.5vw, 68px); font-weight: 700; line-height: 1.05; max-width: 800px; }
+.slide-title .subtitle { font-size: 15px; color: var(--text-muted); margin-top: 16px; line-height: 1.6; max-width: 540px; }
+.meta-bar { display: flex; gap: 40px; margin-top: 36px; padding-top: 28px; border-top: 1px solid var(--border); }
+.meta-item { text-align: center; }
+.meta-item .num { font-family: var(--serif); font-size: 28px; font-weight: 700; color: var(--accent); }
+.meta-item .label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dim); margin-top: 2px; }
+
+.section-label { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; flex-shrink: 0; }
+.slide-heading { font-family: var(--serif); font-size: clamp(24px, 3vw, 34px); font-weight: 700; line-height: 1.15; margin-bottom: 4px; flex-shrink: 0; }
+.slide-subheading { font-size: 14px; color: var(--text-muted); line-height: 1.55; max-width: 600px; margin-bottom: 12px; flex-shrink: 0; }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; flex: 1; min-height: 0; }
+.col-text { display: flex; flex-direction: column; justify-content: center; gap: 12px; }
+.col-text h3 { font-family: var(--serif); font-size: 22px; font-weight: 700; line-height: 1.2; }
+.col-text p { font-size: 13px; line-height: 1.6; color: var(--text-muted); }
+.col-text ul { list-style: none; padding: 0; }
+.col-text li { font-size: 13px; line-height: 1.55; color: var(--text-muted); padding: 3px 0 3px 14px; position: relative; }
+.col-text li::before { content: ''; position: absolute; left: 0; top: 10px; width: 4px; height: 4px; border-radius: 50%; background: var(--coral); opacity: 0.6; }
+
+.card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; flex: 1; min-height: 0; }
+.card-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; flex: 1; min-height: 0; }
+.card-grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 10px; flex: 1; min-height: 0; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 18px; overflow: hidden; display: flex; flex-direction: column; }
+.card h4 { font-size: 9px; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase; color: var(--coral); margin-bottom: 10px; padding-bottom: 7px; border-bottom: 1px solid var(--border); flex-shrink: 0; }
+.card p, .card li { font-size: 12px; line-height: 1.5; color: var(--text-muted); }
+.card ul { list-style: none; padding: 0; }
+.card li { padding: 3px 0 3px 12px; position: relative; }
+.card li::before { content: ''; position: absolute; left: 0; top: 10px; width: 4px; height: 4px; border-radius: 50%; background: var(--coral); opacity: 0.5; }
+.card.highlight { background: var(--coral-dim); border-color: rgba(232, 98, 74, 0.2); }
+.card.highlight h4 { color: var(--text); }
+.card.highlight p, .card.highlight li { color: var(--text); }
+.card.highlight li::before { background: var(--text); }
+.card.green-highlight { background: var(--accent-dim); border-color: rgba(130, 255, 28, 0.2); }
+.card.green-highlight h4 { color: var(--accent); }
+.card.green-highlight p, .card.green-highlight li { color: var(--text); }
+
+/* BEFORE/AFTER */
+.ba-grid { display: grid; grid-template-columns: 1fr auto 1fr; gap: 0; flex: 1; min-height: 0; align-items: stretch; }
+.ba-col { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 22px; display: flex; flex-direction: column; }
+.ba-col.bad { border-color: rgba(255, 80, 80, 0.2); }
+.ba-col.good { border-color: rgba(130, 255, 28, 0.2); }
+.ba-col h4 { font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+.ba-col.bad h4 { color: #FF5252; }
+.ba-col.good h4 { color: var(--accent); }
+.ba-col p, .ba-col li { font-size: 13px; line-height: 1.55; color: var(--text-muted); }
+.ba-col ul { list-style: none; padding: 0; }
+.ba-col li { padding: 4px 0 4px 14px; position: relative; }
+.ba-col.bad li::before { content: ''; position: absolute; left: 0; top: 11px; width: 4px; height: 4px; border-radius: 50%; background: #FF5252; opacity: 0.5; }
+.ba-col.good li::before { content: ''; position: absolute; left: 0; top: 11px; width: 4px; height: 4px; border-radius: 50%; background: var(--accent); opacity: 0.5; }
+.ba-divider { display: flex; align-items: center; justify-content: center; padding: 0 16px; }
+.ba-arrow { font-size: 28px; color: var(--text-dim); }
+
+/* MESSAGING HIERARCHY */
+.msg-stack { display: flex; flex-direction: column; gap: 10px; flex: 1; min-height: 0; }
+.msg-tier { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 20px; display: flex; gap: 20px; align-items: flex-start; }
+.msg-tier-label { flex-shrink: 0; width: 100px; padding-top: 2px; }
+.msg-tier-label .tier-name { font-size: 11px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--coral); }
+.msg-tier-label .tier-len { font-size: 10px; color: var(--text-dim); margin-top: 2px; }
+.msg-tier-text { font-size: 13px; line-height: 1.55; color: var(--text-muted); flex: 1; }
+.msg-tier-text em { color: var(--text); font-style: normal; font-weight: 600; }
+
+/* COMP TABLE */
+.comp-table { width: 100%; border-collapse: separate; border-spacing: 0; table-layout: fixed; }
+.comp-table thead th { font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--coral); padding: 12px 16px; text-align: left; border-bottom: 2px solid var(--coral); background: var(--surface); }
+.comp-table thead th:first-child { width: 120px; color: var(--text-dim); border-bottom-color: var(--border); }
+.comp-table tbody td { padding: 14px 16px; font-size: 12px; line-height: 1.5; color: var(--text-muted); border-bottom: 1px solid var(--border); vertical-align: top; }
+.comp-table tbody td:first-child { font-weight: 700; color: var(--text); font-size: 11px; }
+.comp-table tbody tr:hover td { background: var(--surface); }
+
+/* PERSONA CHIPS */
+.persona-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.persona-chip { font-size: 10px; padding: 4px 10px; border-radius: 20px; background: var(--surface-raised); color: var(--text-muted); border: 1px solid var(--border); font-weight: 500; }
+
+/* RESULTS */
+.results-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 12px; flex-shrink: 0; }
+.result-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px 20px; text-align: center; }
+.result-card .result-num { font-family: var(--serif); font-size: 36px; font-weight: 700; color: var(--accent); line-height: 1; margin-bottom: 6px; }
+.result-card .result-label { font-size: 12px; color: var(--text-muted); line-height: 1.4; }
+
+.grid-gap { height: 8px; flex-shrink: 0; }
+
+/* VALUE TABLE */
+.val-table { width: 100%; border-collapse: separate; border-spacing: 0; }
+.val-table th { font-size: 10px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--coral); padding: 10px 14px; text-align: left; border-bottom: 2px solid var(--coral); background: var(--surface); }
+.val-table td { padding: 10px 14px; font-size: 12px; line-height: 1.45; color: var(--text-muted); border-bottom: 1px solid var(--border); vertical-align: top; }
+.val-table td:first-child { font-weight: 600; color: var(--text); width: 200px; }
+
+@media (max-width: 900px) {
+  .slide-inner { padding: 28px 24px 48px; }
+  .two-col { grid-template-columns: 1fr; }
+  .card-grid, .card-grid-3, .card-grid-4 { grid-template-columns: 1fr; }
+  .ba-grid { grid-template-columns: 1fr; }
+  .ba-divider { transform: rotate(90deg); padding: 8px 0; }
+  .results-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1: TITLE -->
+<section class="slide">
+  <div class="slide-inner slide-title">
+    <div class="overline">Positioning + Messaging</div>
+    <h1>Repositioning for the Real Value Proposition</h1>
+    <p class="subtitle">Rebuilt the positioning, messaging hierarchy, and competitive narrative for a B2B tech platform that had lost sight of what made it valuable.</p>
+    <div class="meta-bar">
+      <div class="meta-item"><div class="num">+50%</div><div class="label">First-Time Signups</div></div>
+      <div class="meta-item"><div class="num">+35%</div><div class="label">Daily Traffic</div></div>
+      <div class="meta-item"><div class="num">+351%</div><div class="label">Core User Action</div></div>
+      <div class="meta-item"><div class="num">5</div><div class="label">Customer Segments</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 2: THE PROBLEM -->
+<section class="slide">
+  <div class="slide-inner">
+    <div class="section-label">The Problem</div>
+    <div class="slide-heading">A Platform That Forgot What It Was For</div>
+    <div class="slide-subheading">Experts Exchange had drifted into vague "community" messaging when the actual value was expert Q&A.</div>
+    <div class="ba-grid">
+      <div class="ba-col bad">
+        <h4>What the Messaging Said</h4>
+        <p style="font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 12px;">"Contribute to the community of tech professionals"</p>
+        <ul>
+          <li>Positioned as a "community-driven" platform with no clear value proposition</li>
+          <li>CTA asked users to contribute, not to get value</li>
+          <li>Messaging was inward-facing: about the community's identity, not the user's problem</li>
+          <li>Zero mention of what you actually get by joining</li>
+          <li>Indistinguishable from a dozen other tech forums</li>
+        </ul>
+      </div>
+      <div class="ba-divider"><span class="ba-arrow">→</span></div>
+      <div class="ba-col good">
+        <h4>What Users Actually Valued</h4>
+        <p style="font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 12px;">"Get a real answer from a real expert"</p>
+        <ul>
+          <li>Solving complex, niche technical problems that Google and AI couldn't</li>
+          <li>Access to verified human experts with real-world context</li>
+          <li>A private, noise-free environment (no trolls, no ads, no fluff)</li>
+          <li>Earning recognition and rewards for sharing expertise</li>
+          <li>Cost savings vs. consulting firms and vendor support contracts</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 3: DIAGNOSIS -->
+<section class="slide">
+  <div class="slide-inner">
+    <div class="section-label">Diagnosis</div>
+    <div class="slide-heading">Why the Positioning Was Broken</div>
+    <div class="slide-subheading">The platform had been reorganized around a "community first" ideology that didn't match the product's actual value.</div>
+    <div class="two-col">
+      <div class="col-text">
+        <h3>What Happened</h3>
+        <p>A previous initiative had reframed Experts Exchange as a "community of tech professionals" rather than what it actually was: a premium Q&A platform where you could get niche technical problems solved by verified experts.</p>
+        <p>The messaging, product copy, acquisition pages, and internal language all reflected this community-first framing. The result was a value proposition so diluted it could describe any tech forum on the internet.</p>
+        <p>Meanwhile, AI tools were entering the market offering instant answers. The competitive landscape was shifting fast, and EE's messaging gave users no reason to choose it over ChatGPT, Stack Overflow, or just Googling harder.</p>
+      </div>
+      <div class="col-text">
+        <h3>What I Did</h3>
+        <p>I applied the April Dunford positioning methodology to rebuild the strategic foundation from scratch. That meant working through the competitive landscape, the audience the platform served best, and the value proposition the company could credibly own.</p>
+        <ul>
+          <li>Mapped competitive alternatives (Stack Overflow, AI tools, consulting firms, vendor support)</li>
+          <li>Identified the key unique attributes that none of those alternatives could match</li>
+          <li>Defined the enabled value and proof points for each</li>
+          <li>Segmented the customer base by role and behavior</li>
+          <li>Built persona profiles for both members and contributors</li>
+          <li>Created a full messaging hierarchy from one-liner through 500-word description</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 4: POSITIONING -->
+<section class="slide">
+  <div class="slide-inner">
+    <div class="section-label">Positioning Framework</div>
+    <div class="slide-heading">The Strategic Foundation</div>
+    <div class="slide-subheading">Using the April Dunford methodology to build a defensible competitive position.</div>
+    <div class="card-grid">
+      <div class="card">
+        <h4>Market Category</h4>
+        <p>Community-driven learning platforms / Online knowledge exchange. Competing against public forums, AI tools, consulting firms, and vendor support contracts.</p>
+      </div>
+      <div class="card highlight">
+        <h4>Primary Value Proposition</h4>
+        <p>Access to a private community with high-level experts to answer complex or niche troubleshooting questions, get advice from specialized experts, conduct primary research on niche topics, and build a professional network.</p>
+      </div>
+      <div class="card">
+        <h4>Key Unique Attributes</h4>
+        <ul>
+          <li><strong>Private, curated community of verified experts:</strong> focused, high-quality discussions in a noise-free environment</li>
+          <li><strong>Human expertise with real-world context:</strong> nuanced insights AI cannot replicate for complex problems</li>
+          <li><strong>Incentivized quality assurance:</strong> points, awards, and recognition that reward high-quality contributions</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Enabled Value</h4>
+        <ul>
+          <li><strong>Access:</strong> Expert answers to complex, niche questions</li>
+          <li><strong>Cost savings:</strong> vs. consulting firms, support contracts, long-term agreements</li>
+          <li><strong>Peace of mind:</strong> that your problem is solved and every possibility explored</li>
+          <li><strong>Career advancement:</strong> learning, teaching, MVP status, client showcasing</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 5: CUSTOMER SEGMENTS -->
+<section class="slide">
+  <div class="slide-inner">
+    <div class="section-label">Customer Segmentation</div>
+    <div class="slide-heading">Who Uses the Platform and Why</div>
+    <div class="slide-subheading">Five customer segments by role and authority level, each with distinct personas and use patterns.</div>
+    <div class="card-grid-3" style="flex: 0.5;">
+      <div class="card">
+        <h4>Developer</h4>
+        <p style="font-size: 11px; color: var(--text-dim);">Software Engineer, Systems Engineer</p>
+        <p style="margin-top: 4px;">Authority: Low</p>
+        <div class="persona-row"><span class="persona-chip">Troubleshooter</span><span class="persona-chip">Lurker</span><span class="persona-chip">Knowledge Seeker</span></div>
+      </div>
+      <div class="card">
+        <h4>Administrator</h4>
+        <p style="font-size: 11px; color: var(--text-dim);">Sys Admin, Network Admin, IT Admin, Tech Support</p>
+        <p style="margin-top: 4px;">Authority: Medium-Low</p>
+        <div class="persona-row"><span class="persona-chip">Troubleshooter</span><span class="persona-chip">Prepper</span><span class="persona-chip">Lurker</span><span class="persona-chip">Knowledge Seeker</span></div>
+      </div>
+      <div class="card">
+        <h4>IT Manager</h4>
+        <p style="font-size: 11px; color: var(--text-dim);">IT Support Manager, Technical Project Lead</p>
+        <p style="margin-top: 4px;">Authority: Medium-High</p>
+        <div class="persona-row"><span class="persona-chip">Researcher</span><span class="persona-chip">Prepper</span><span class="persona-chip">Educator</span><span class="persona-chip">Selective</span></div>
+      </div>
+    </div>
+    <div class="grid-gap"></div>
+    <div class="card-grid" style="flex: 0.5;">
+      <div class="card">
+        <h4>IT Director</h4>
+        <p style="font-size: 11px; color: var(--text-dim);">CIO, CISO, CTO</p>
+        <p style="margin-top: 4px;">Authority: High</p>
+        <div class="persona-row"><span class="persona-chip">Researcher</span><span class="persona-chip">Prepper</span></div>
+      </div>
+      <div class="card">
+        <h4>Consultant</h4>
+        <p style="font-size: 11px; color: var(--text-dim);">Owner, IT Specialist, CEO</p>
+        <p style="margin-top: 4px;">Authority: High</p>
+        <div class="persona-row"><span class="persona-chip">Troubleshooter</span><span class="persona-chip">Researcher</span><span class="persona-chip">Prepper</span><span class="persona-chip">Volume</span><span class="persona-chip">Knowledge Seeker</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 6: PERSONAS -->
+<section class="slide">
+  <div class="slide-inner">
+    <div class="section-label">User Personas</div>
+    <div class="slide-heading">Behavioral Personas Across Members and Contributors</div>
+    <div class="card-grid-3" style="flex: 0.5;">
+      <div class="card">
+        <h4>Troubleshooter</h4>
+        <p>Uses EE specifically for asking questions. High monthly activity, constantly bouncing issues off other members.</p>
+      </div>
+      <div class="card">
+        <h4>Researcher</h4>
+        <p>Engages to conduct research for specific IT projects. Gathers information, seeks insights, explores solutions.</p>
+      </div>
+      <div class="card">
+        <h4>Prepper</h4>
+        <p>Maintains membership as insurance for IT emergencies. May not engage regularly but keeps access active as a reliable last resort.</p>
+      </div>
+    </div>
+    <div class="grid-gap"></div>
+    <div class="card-grid-3" style="flex: 0.5;">
+      <div class="card">
+        <h4>Volume Contributor</h4>
+        <p>Answers a high number of questions across topics. Primarily motivated by earning points and recognition.</p>
+      </div>
+      <div class="card">
+        <h4>Educator</h4>
+        <p>Prefers creating longform articles or tutorials. Goal is to educate others or showcase work to potential clients.</p>
+      </div>
+      <div class="card">
+        <h4>Community Builder</h4>
+        <p>Power members who feel ownership of the platform. Moderate forums, organize events, guide other users.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 7: MESSAGING HIERARCHY -->
+<section class="slide">
+  <div class="slide-inner">
+    <div class="section-label">Messaging Architecture</div>
+    <div class="slide-heading">Scalable Messaging Hierarchy</div>
+    <div class="slide-subheading">A consistent narrative from one sentence to 500 words. Everyone speaks from the same foundation.</div>
+    <div class="msg-stack">
+      <div class="msg-tier">
+        <div class="msg-tier-label"><div class="tier-name">One-Liner</div><div class="tier-len">~15 words</div></div>
+        <div class="msg-tier-text">Experts Exchange is a <em>private community-driven platform</em> where industry experts give advice and help <em>solve complex technical problems</em>.</div>
+      </div>
+      <div class="msg-tier">
+        <div class="msg-tier-label"><div class="tier-name">Elevator</div><div class="tier-len">~35 words</div></div>
+        <div class="msg-tier-text">Experts Exchange is a private community-driven platform where industry experts give advice and help solve complex technical problems. By supporting a <em>private platform</em> and offering <em>incentives for high-quality assistance</em>, EE has created an environment that enables focused, transformative discussions.</div>
+      </div>
+      <div class="msg-tier">
+        <div class="msg-tier-label"><div class="tier-name">100-Word</div><div class="tier-len">Description</div></div>
+        <div class="msg-tier-text">Adds the Q&A forum framing, the incentive system (points, awards, recognition), and the environment differentiators: <em>private, troll-free, ad-free, noise-free</em>. Introduces the concept of authentic connections producing real-world results.</div>
+      </div>
+      <div class="msg-tier">
+        <div class="msg-tier-label"><div class="tier-name">500-Word</div><div class="tier-len">Full Description</div></div>
+        <div class="msg-tier-text">Expands into all four value themes: <em>Access to Private Expert Community</em> (focused discussions, verified experts), <em>Cost-Effective Alternative</em> (vs. consulting and support contracts), <em>Career Advancement</em> (MVP status, skill showcasing), and <em>Peace of Mind</em> (comprehensive problem resolution). Includes customer segments and competitive differentiation.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 8: COMPETITIVE MESSAGING -->
+<section class="slide">
+  <div class="slide-inner">
+    <div class="section-label">Competitive Messaging</div>
+    <div class="slide-heading">How We Respond to Every Alternative</div>
+    <div class="slide-subheading">Structured responses for the four competitive alternatives the sales and marketing team would encounter.</div>
+    <div style="flex: 1; min-height: 0; overflow: hidden;">
+      <table class="comp-table">
+        <thead><tr><th>Competitor</th><th>Their Claim</th><th>Our Response</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>Stack Overflow</td>
+            <td>Largest developer community with millions of questions and answers</td>
+            <td>EE provides a private, curated environment where verified experts deliver personalized solutions. Stack Overflow offers volume; we offer quality, focus, and direct expert engagement tailored to your specific environment.</td>
+          </tr>
+          <tr>
+            <td>AI Tools</td>
+            <td>Instant answers to technical questions, 24/7</td>
+            <td>AI excels at general information. Our human experts provide nuanced insights, real-world experience, and solutions adapted to specific business contexts that AI cannot replicate. Complex problems require human judgment and understanding of unique environments.</td>
+          </tr>
+          <tr>
+            <td>Consulting Firms</td>
+            <td>Enterprise-grade expertise with dedicated support</td>
+            <td>Same level of expertise at a fraction of the cost with faster response times. Subscription model provides unlimited access to hundreds of experts, eliminating the delays and expense of traditional consulting.</td>
+          </tr>
+          <tr>
+            <td>Quora</td>
+            <td>Access to experts across all industries</td>
+            <td>EE focuses specifically on technology professionals with verified expertise. Quora covers broad topics; we provide deep, specialized technical knowledge from practitioners who work with these technologies daily.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 9: VALUE THEMES BY SEGMENT -->
+<section class="slide">
+  <div class="slide-inner">
+    <div class="section-label">Segment-Specific Messaging</div>
+    <div class="slide-heading">Value Themes Mapped to Buyer Segments</div>
+    <div class="slide-subheading">Each segment gets messaging anchored to their specific problems, not generic platform benefits.</div>
+    <div class="card-grid">
+      <div class="card">
+        <h4>IT Professionals & Admins</h4>
+        <ul>
+          <li><strong>Access:</strong> Immediate access to experts who understand complex, niche problems</li>
+          <li><strong>Cost Savings:</strong> Dramatically reduce costs vs. consulting firms and emergency support</li>
+          <li><strong>Peace of Mind:</strong> Confidence that complex problems will be thoroughly explored and resolved</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>IT Directors & Decision Makers</h4>
+        <ul>
+          <li><strong>Team Empowerment:</strong> Enterprise-level expertise at a fraction of consulting costs</li>
+          <li><strong>Risk Mitigation:</strong> Critical technical decisions validated by experts before implementation</li>
+          <li><strong>Competitive Advantage:</strong> Access to expertise competitors can't afford</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Problem Space: Admin</h4>
+        <p>Complex problems requiring specialized expertise beyond current knowledge. System downtime, business impact, pressure for fast resolution. Current solutions (Stack Overflow, AI, vendor support) are either too noisy, too generic, or too expensive.</p>
+      </div>
+      <div class="card">
+        <h4>Problem Space: Director</h4>
+        <p>Teams lack specialized expertise for complex challenges, leading to extended resolution times and expensive emergency consulting. Training is costly with uncertain ROI. Vendor support is slow. Internal knowledge bases go stale.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 10: RESULTS -->
+<section class="slide">
+  <div class="slide-inner">
+    <div class="section-label">Results</div>
+    <div class="slide-heading">What It Delivered</div>
+    <div class="slide-subheading">Metrics measured after the repositioned messaging was deployed across acquisition, product, and marketing surfaces.</div>
+    <div class="results-grid">
+      <div class="result-card"><div class="result-num">+50%</div><div class="result-label">First-Time Signups</div></div>
+      <div class="result-card"><div class="result-num">+35%</div><div class="result-label">Daily Traffic</div></div>
+      <div class="result-card"><div class="result-num">+351%</div><div class="result-label">Question Posting (Core Action)</div></div>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <h4>What I Built</h4>
+        <ul>
+          <li>Full positioning framework using April Dunford methodology</li>
+          <li>Competitive landscape analysis against four alternative categories</li>
+          <li>Customer segmentation by role, authority level, and behavior</li>
+          <li>10 behavioral personas across members and contributors</li>
+          <li>Messaging hierarchy: one-liner through 500-word description</li>
+          <li>Competitive messaging matrix with structured responses</li>
+          <li>Segment-specific value themes with feature/benefit mapping</li>
+          <li>Brag points with approved wording for sales and marketing</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>What I Learned</h4>
+        <ul>
+          <li>Positioning drift happens slowly, then all at once. When internal ideology replaces user value, the metrics follow</li>
+          <li>The strongest messaging describes what the user gets, not what the company believes about itself</li>
+          <li>"Community" is not a value proposition. Access to experts who solve your problem is</li>
+          <li>A messaging hierarchy prevents improvisation. When everyone speaks from the same foundation, consistency compounds</li>
+          <li>Competitive messaging should acknowledge the alternative's strength, then redirect to your differentiation</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NAV -->
+<div class="nav-bar" id="navDots"></div>
+<div class="slide-counter" id="slideCounter">1 / 10</div>
+<div class="swipe-hint">Swipe or scroll <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+const dotsContainer = document.getElementById('navDots');
+const counter = document.getElementById('slideCounter');
+const total = slides.length;
+
+slides.forEach((_, i) => {
+  const dot = document.createElement('button');
+  dot.className = 'nav-dot';
+  dot.addEventListener('click', () => { slides[i].scrollIntoView({ behavior: 'smooth', inline: 'start' }); });
+  dotsContainer.appendChild(dot);
+});
+
+const dots = dotsContainer.querySelectorAll('.nav-dot');
+function getScrollLeft() {
+  return Math.max(document.documentElement.scrollLeft, document.body.scrollLeft, window.scrollX || 0);
+}
+function getActive() { return Math.round(getScrollLeft() / window.innerWidth); }
+function updateNav() {
+  const active = getActive();
+  dots.forEach((d, i) => d.classList.toggle('active', i === active));
+  counter.textContent = (active + 1) + ' / ' + total;
+}
+window.addEventListener('scroll', updateNav, { passive: true });
+document.addEventListener('scroll', updateNav, { passive: true });
+document.documentElement.addEventListener('scroll', updateNav, { passive: true });
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
+      const idx = Array.from(slides).indexOf(entry.target);
+      dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+      counter.textContent = (idx + 1) + ' / ' + total;
+    }
+  });
+}, { threshold: 0.5 });
+slides.forEach(s => observer.observe(s));
+updateNav();
+document.addEventListener('keydown', (e) => {
+  const current = getActive();
+  if (e.key === 'ArrowRight' && current < total - 1) slides[current + 1].scrollIntoView({ behavior: 'smooth', inline: 'start' });
+  else if (e.key === 'ArrowLeft' && current > 0) slides[current - 1].scrollIntoView({ behavior: 'smooth', inline: 'start' });
+});
+</script>
+</body>
+</html>

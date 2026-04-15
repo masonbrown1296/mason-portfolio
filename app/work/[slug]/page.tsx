@@ -26,6 +26,8 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
   const isCRAM = project.slug === 'cram'
   const isGamification = project.slug === 'gamification-redesign'
   const isHealthcare = project.slug === 'healthcare-buyer-intelligence'
+  const isBytesize = project.slug === 'bytesize-newsletter'
+  const isPositioning = project.slug === 'company-rebrand'
 
   return (
     <>
@@ -88,6 +90,8 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
         isCRAM={isCRAM}
         isGamification={isGamification}
         isHealthcare={isHealthcare}
+        isBytesize={isBytesize}
+        isPositioning={isPositioning}
       />
 
       {/* ════════ CRAM AVAILABILITY NOTE ════════ */}

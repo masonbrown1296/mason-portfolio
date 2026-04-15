@@ -41,10 +41,10 @@ export const projects: Project[] = [
   {
     slug: 'company-rebrand',
     tag: 'Positioning + Messaging',
-    title: 'Rebranding for Growth',
-    descriptor: 'Led a full rebrand unifying messaging and visuals across the product, driving major conversion lifts',
+    title: 'Repositioning for the Real Value Proposition',
+    descriptor: 'Applied the April Dunford methodology to rebuild strategic positioning from scratch, then executed the full rebrand across messaging, visual identity, and product UI',
     accentColor: 'gold',
-    pills: ['+50% First-Time Signups', '+35% Daily Traffic', '+351% Question Posting'],
+    pills: ['+50% First-Time Signups', '+351% Question Posting', 'April Dunford Methodology'],
   },
   {
     slug: 'cram',
