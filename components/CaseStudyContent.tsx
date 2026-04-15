@@ -133,21 +133,35 @@ export default function CaseStudyContent({ project, color, isCRAM, isGamificatio
         </section>
       )}
 
-      {/* ─── GAMIFICATION: Image Gallery ─── */}
+      {/* ─── GAMIFICATION: Magazine ─── */}
       {isGamification && (
-        <section className="dot-grid bg-[var(--bg-dark)] py-12">
+        <section className="dot-grid bg-[var(--bg-dark)] py-24">
           <div className="max-w-[1200px] mx-auto px-6 md:px-12">
-            <div className="flex gap-4 overflow-x-auto pb-4 -mx-6 px-6 snap-x snap-mandatory">
-              {gamificationImages.map((src, i) => (
-                <div key={i} className="flex-shrink-0 snap-center">
-                  <img
-                    src={src}
-                    alt={`Gamification design ${i + 1}`}
-                    className="h-[300px] md:h-[400px] w-auto rounded-xl border border-[#252220]"
-                  />
-                </div>
-              ))}
-            </div>
+            <FadeIn>
+              <SectionLabel text="The Deliverable" dotColor={color} />
+              <h2 className="font-display font-extrabold text-3xl md:text-[40px] leading-[1.1] tracking-[-0.02em] text-[var(--text-dark)] mb-8">
+                Explore the gamification system.
+              </h2>
+              <div className="rounded-2xl overflow-hidden border border-[#252220]">
+                <iframe
+                  src="/gamification-magazine-embedded.html"
+                  className="w-full"
+                  style={{ height: '600px', border: 'none', display: 'block' }}
+                  title="Gamification System Redesign"
+                />
+              </div>
+              <div className="flex items-center justify-between mt-3 px-1">
+                <p className="text-xs font-body text-[var(--text-muted)]">13 slides · swipe or use arrow keys to navigate</p>
+                <a
+                  href="/gamification-magazine-embedded.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs font-body text-[var(--text-muted)] hover:text-[var(--text-dark)] transition-colors"
+                >
+                  Open full screen →
+                </a>
+              </div>
+            </FadeIn>
           </div>
         </section>
       )}
