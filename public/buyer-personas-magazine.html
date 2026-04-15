@@ -1059,7 +1059,6 @@ body::before {
 const slides = document.querySelectorAll('.slide');
 const dotsContainer = document.getElementById('navDots');
 const counter = document.getElementById('slideCounter');
-const html = document.documentElement;
 const total = slides.length;
 const engineSlides = new Set([4,5,6,7,8,9,10,11,12]);
 
@@ -1071,16 +1070,40 @@ slides.forEach((_, i) => {
 });
 
 const dots = dotsContainer.querySelectorAll('.nav-dot');
+
+function getScrollLeft() {
+  return Math.max(document.documentElement.scrollLeft, document.body.scrollLeft, window.scrollX || 0);
+}
+
+function getActive() {
+  return Math.round(getScrollLeft() / window.innerWidth);
+}
+
 function updateNav() {
-  const active = Math.round(html.scrollLeft / window.innerWidth);
+  const active = getActive();
   dots.forEach((d, i) => d.classList.toggle('active', i === active));
   counter.textContent = (active + 1) + ' / ' + total;
 }
-html.addEventListener('scroll', updateNav);
+
+window.addEventListener('scroll', updateNav, { passive: true });
+document.addEventListener('scroll', updateNav, { passive: true });
+document.documentElement.addEventListener('scroll', updateNav, { passive: true });
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
+      const idx = Array.from(slides).indexOf(entry.target);
+      dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+      counter.textContent = (idx + 1) + ' / ' + total;
+    }
+  });
+}, { threshold: 0.5 });
+
+slides.forEach(s => observer.observe(s));
 updateNav();
 
 document.addEventListener('keydown', (e) => {
-  const current = Math.round(html.scrollLeft / window.innerWidth);
+  const current = getActive();
   if (e.key === 'ArrowRight' && current < total - 1) slides[current + 1].scrollIntoView({ behavior: 'smooth', inline: 'start' });
   else if (e.key === 'ArrowLeft' && current > 0) slides[current - 1].scrollIntoView({ behavior: 'smooth', inline: 'start' });
 });
