@@ -45,14 +45,17 @@ const phases = [
 ]
 
 const tiers = [
-  { name: 'Bronze', hex: '#B8723A' },
-  { name: 'Silver', hex: '#B8BCC2' },
-  { name: 'Gold', hex: '#E5B84A' },
-  { name: 'Amber', hex: '#D97F2E' },
-  { name: 'Platinum', hex: '#D3D5D7' },
-  { name: 'Diamond', hex: '#86D8E8' },
-  { name: 'Emerald', hex: '#4FA374' },
+  { name: 'Bronze', range: '1-25', icon: '/gamification-icons/level-icons/13.svg' },
+  { name: 'Silver', range: '26-50', icon: '/gamification-icons/level-icons/38.svg' },
+  { name: 'Gold', range: '51-75', icon: '/gamification-icons/level-icons/63.svg' },
+  { name: 'Amber', range: '76-100', icon: '/gamification-icons/level-icons/88.svg' },
+  { name: 'Platinum', range: '101-125', icon: '/gamification-icons/level-icons/113.svg' },
+  { name: 'Diamond', range: '126-150', icon: '/gamification-icons/level-icons/138.svg' },
+  { name: 'Emerald', range: '151-175', icon: '/gamification-icons/level-icons/163.svg' },
 ]
+
+// Progression strip — shows the tier-reset moments across all 175 levels.
+const progression = [1, 25, 50, 75, 100, 125, 150, 175]
 
 const components = [
   {
@@ -233,19 +236,103 @@ export default function GamificationCaseStudy() {
                   key={t.name}
                   className="rounded-md border border-neutral-200 bg-off-white p-5 shadow-inset-hairline"
                 >
-                  <div
-                    className="h-10 w-10 rounded-full border border-black/10 mb-4"
-                    style={{
-                      background: `linear-gradient(135deg, ${t.hex}, ${t.hex}cc 60%, ${t.hex}77)`,
-                    }}
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={t.icon}
+                    alt=""
+                    className="h-20 w-20 object-contain mb-4"
                     aria-hidden
                   />
                   <p className="text-label uppercase text-neutral-400">
                     Tier 0{i + 1}
                   </p>
                   <p className="mt-1 text-heading-sm text-ink">{t.name}</p>
+                  <p className="mt-1 text-[13px] text-neutral-500 tabular-nums">
+                    Levels {t.range}
+                  </p>
                 </div>
               ))}
+            </div>
+          </FadeIn>
+
+          {/* Progression strip — tier-reset moments at levels 1/25/50/75/100/125/150/175. */}
+          <FadeIn delay={60}>
+            <div className="mt-16 rounded-md border border-neutral-200 bg-off-white p-8 shadow-inset-hairline">
+              <p className="text-label uppercase text-ember">
+                Milestone moments
+              </p>
+              <h3 className="mt-3 text-heading-sm text-ink">
+                Every 25 levels, the visual resets.
+              </h3>
+              <p className="mt-3 text-body text-neutral-600 max-w-2xl">
+                Seven recurring celebrations across the full 175-level arc,
+                instead of one terminal finish line. Each reset hands users a
+                fresh icon vocabulary and a new physical reward.
+              </p>
+              <div className="mt-8 grid grid-cols-4 sm:grid-cols-8 gap-4">
+                {progression.map((lvl) => (
+                  <div
+                    key={lvl}
+                    className="flex flex-col items-center text-center"
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={`/gamification-icons/level-icons/${lvl}.svg`}
+                      alt=""
+                      className="h-16 w-16 object-contain"
+                      aria-hidden
+                    />
+                    <p className="mt-3 text-label uppercase text-neutral-400">
+                      Level
+                    </p>
+                    <p className="text-[14px] font-semibold text-ink tabular-nums">
+                      {lvl}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </FadeIn>
+        </Container>
+      </section>
+
+      {/* ════════ CERTIFICATION BADGES ════════ */}
+      <section className="py-section-lg bg-white border-t border-neutral-200">
+        <Container>
+          <FadeIn>
+            <SectionLabel>Certification badges</SectionLabel>
+            <h2 className="mt-5 text-display-md-fluid text-ink max-w-[24ch]">
+              Twenty topic credentials, built to travel.
+            </h2>
+            <p className="mt-6 text-body-lg text-neutral-700 max-w-2xl">
+              Each topic gets a 20-tier climb from bronze through iridescent.
+              Designed for LinkedIn, X, and resume use so every earned badge
+              keeps working outside the platform.
+            </p>
+          </FadeIn>
+
+          <FadeIn delay={40}>
+            <div className="mt-14 grid grid-cols-4 sm:grid-cols-5 md:grid-cols-10 gap-4">
+              {Array.from({ length: 20 }, (_, i) => {
+                const num = String(i + 1).padStart(2, '0')
+                return (
+                  <div
+                    key={num}
+                    className="flex flex-col items-center text-center"
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={`/gamification-icons/certification-badges/badge-${num}.svg`}
+                      alt=""
+                      className="h-20 w-20 object-contain"
+                      aria-hidden
+                    />
+                    <p className="mt-2 text-[11px] uppercase tracking-wider text-neutral-400 tabular-nums">
+                      Tier {num}
+                    </p>
+                  </div>
+                )
+              })}
             </div>
           </FadeIn>
         </Container>
