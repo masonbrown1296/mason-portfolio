@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Container from '@/components/Container'
 import SectionLabel from '@/components/SectionLabel'
 import FadeIn from '@/components/FadeIn'
@@ -7,6 +8,29 @@ import StatsStrip from '@/components/case/StatsStrip'
 import NextPrev from '@/components/case/NextPrev'
 import PullQuote from '@/components/case/PullQuote'
 import { getProject, getAdjacentProjects } from '@/data/projects'
+
+const screens = [
+  {
+    src: '/work/gamification/overview.png',
+    title: 'Overview dashboard',
+    body: 'The landing surface. Level progress, global and country rank, Expert Status, activity log, endorsements, all one scroll.',
+  },
+  {
+    src: '/work/gamification/levels.png',
+    title: 'Levels page',
+    body: 'Every tier in one place. Points remaining, next physical reward, reset icon reveal at each threshold.',
+  },
+  {
+    src: '/work/gamification/badges.png',
+    title: 'Achievements',
+    body: 'Ninety-plus hexagonal pixel badges with four-tier progression (Advisor, Tutor, Teacher, Mentor). Native to the developer aesthetic.',
+  },
+  {
+    src: '/work/gamification/rewards.png',
+    title: 'Physical rewards',
+    body: 'T-shirts, hats, hoodies, mugs, backpacks, portable monitors, Funko Pops, a framed 1M-point certificate. Fifteen-plus tiers of actual swag.',
+  },
+]
 
 const project = getProject('gamification')!
 const { prev, next } = getAdjacentProjects('gamification')
@@ -363,6 +387,48 @@ export default function GamificationCaseStudy() {
                   <h3 className="mt-3 text-heading-sm text-ink">{c.t}</h3>
                   <p className="mt-3 text-body text-neutral-600">{c.b}</p>
                 </div>
+              </FadeIn>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* ════════ IN THE PRODUCT — REAL SCREENS ════════ */}
+      <section className="py-section-lg bg-white border-t border-neutral-200">
+        <Container>
+          <FadeIn>
+            <SectionLabel>In the product</SectionLabel>
+            <h2 className="mt-5 text-display-md-fluid text-ink max-w-[24ch]">
+              Four surfaces from the shipped system.
+            </h2>
+            <p className="mt-6 text-body-lg text-neutral-700 max-w-2xl">
+              Figma to dev to live: the dashboard users see when they log in,
+              the levels page, the achievement grid, and the physical reward
+              ladder that runs alongside the points.
+            </p>
+          </FadeIn>
+
+          <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
+            {screens.map((s, i) => (
+              <FadeIn key={s.src} delay={i * 40}>
+                <figure className="rounded-md overflow-hidden border border-neutral-200 bg-off-white shadow-inset-hairline">
+                  <div className="relative aspect-[3/2] bg-neutral-100">
+                    <Image
+                      src={s.src}
+                      alt={`${s.title} screenshot`}
+                      fill
+                      sizes="(min-width: 768px) 50vw, 100vw"
+                      className="object-cover"
+                    />
+                  </div>
+                  <figcaption className="p-6">
+                    <p className="text-label uppercase text-ember">
+                      Surface 0{i + 1}
+                    </p>
+                    <h3 className="mt-2 text-heading-sm text-ink">{s.title}</h3>
+                    <p className="mt-2 text-body text-neutral-600">{s.body}</p>
+                  </figcaption>
+                </figure>
               </FadeIn>
             ))}
           </div>

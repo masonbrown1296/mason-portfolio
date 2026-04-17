@@ -44,14 +44,15 @@ export default function ContactBlock({ className, variant = 'section' }: Contact
     <section id="contact" className={cn('py-section', className)}>
       <Container>
         <FadeIn>
-          <SectionLabel>Contact</SectionLabel>
-          <h2 className="mt-5 text-display-md-fluid text-ink max-w-[18ch]">
-            I&apos;m looking for senior PMM, growth, or head of marketing roles.
+          <SectionLabel>What I&apos;m looking for</SectionLabel>
+          <h2 className="mt-5 text-display-md-fluid text-ink max-w-[20ch]">
+            A senior PMM, growth, or head of marketing seat where the function is mine to own.
           </h2>
           {variant === 'section' && (
             <p className="mt-6 text-body-lg text-neutral-600 max-w-xl">
               Available immediately. Remote-first, open to Chicago onsite.
-              Targeting healthtech, B2B SaaS, and cybersecurity.
+              Targeting healthtech, B2B SaaS, and cybersecurity at Series B
+              through public.
             </p>
           )}
         </FadeIn>

@@ -1,3 +1,4 @@
+import { Radar } from 'lucide-react'
 import Container from '@/components/Container'
 import SectionLabel from '@/components/SectionLabel'
 import FadeIn from '@/components/FadeIn'
@@ -70,6 +71,7 @@ export default function CompetitiveToolPage() {
         gradientClass={tool.gradientClass}
         backHref="/build"
         backLabel="Back to build"
+        icon={Radar}
       />
 
       {/* ════════ ONE-PARAGRAPH PITCH ════════ */}

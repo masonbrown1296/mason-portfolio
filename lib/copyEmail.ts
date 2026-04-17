@@ -1,16 +1,16 @@
 export const EMAIL_ADDRESS = 'masonbrown1296@gmail.com'
 
 const TOAST_LINES = [
-  "Copied. Don't forget to circle back.",
-  "Copied. Ball's in your court now.",
-  "Copied. Let's take this offline.",
-  "Copied. Touch base when you can.",
-  "Copied. Let's hop on a quick sync.",
-  "Copied. Run it up the flagpole.",
-  "Copied. Looking forward to synergizing.",
-  "Copied. Let's unpack this next week.",
-  "Copied. Think big picture on this one.",
-  "Copied. Moving the needle starts here.",
+  "Email address copied. Don't forget to circle back.",
+  "Email address copied. Ball's in your court now.",
+  "Email address copied. Let's take this offline.",
+  "Email address copied. Touch base when you can.",
+  "Email address copied. Let's hop on a quick sync.",
+  "Email address copied. Run it up the flagpole.",
+  "Email address copied. Looking forward to synergizing.",
+  "Email address copied. Let's unpack this next week.",
+  "Email address copied. Think big picture on this one.",
+  "Email address copied. Moving the needle starts here.",
 ]
 
 export interface ToastEventDetail {

@@ -21,6 +21,8 @@ export interface Project {
   role: string
 }
 
+export type ToolIcon = 'radar' | 'sparkles'
+
 export interface Tool {
   slug: ToolSlug
   label: string
@@ -28,6 +30,7 @@ export interface Tool {
   hook: string
   stack: string[]
   gradientClass: string
+  icon: ToolIcon
 }
 
 export const projects: Project[] = [
@@ -101,6 +104,7 @@ export const tools: Tool[] = [
     hook: 'Multi-API signal ingestion, Claude-powered synthesis, ready-to-use competitive briefings.',
     stack: ['Next.js', 'Claude API', 'Jina Reader', 'Firecrawl', 'Vercel'],
     gradientClass: 'gradient-competitive',
+    icon: 'radar',
   },
   {
     slug: 'recommendation',
@@ -109,6 +113,7 @@ export const tools: Tool[] = [
     hook: 'Stakeholder, stage, and objection in. Ranked recommendations with reasoning out.',
     stack: ['Azure', 'OpenAI API', 'Next.js'],
     gradientClass: 'gradient-recommendation',
+    icon: 'sparkles',
   },
 ]
 

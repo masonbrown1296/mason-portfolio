@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ArrowLeft } from 'lucide-react'
+import { ArrowLeft, type LucideIcon } from 'lucide-react'
 import Container from '@/components/Container'
 
 interface CaseHeroProps {
@@ -12,6 +12,7 @@ interface CaseHeroProps {
   gradientClass: string
   backHref?: string
   backLabel?: string
+  icon?: LucideIcon
 }
 
 export default function CaseHero({
@@ -24,6 +25,7 @@ export default function CaseHero({
   gradientClass,
   backHref = '/work',
   backLabel = 'Back to work',
+  icon: Icon,
 }: CaseHeroProps) {
   return (
     <section
@@ -37,6 +39,12 @@ export default function CaseHero({
           <ArrowLeft size={16} strokeWidth={1.75} />
           {backLabel}
         </Link>
+
+        {Icon && (
+          <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-md bg-white/10 border border-white/20 text-white">
+            <Icon size={26} strokeWidth={1.75} />
+          </div>
+        )}
 
         <p className="text-label uppercase text-white/80">{label}</p>
         <h1 className="mt-4 text-display-lg-fluid text-white max-w-[22ch]">

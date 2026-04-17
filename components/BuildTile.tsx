@@ -1,7 +1,12 @@
 import Link from 'next/link'
-import { ArrowUpRight } from 'lucide-react'
+import { ArrowUpRight, Radar, Sparkles } from 'lucide-react'
 import { cn } from '@/lib/utils'
-import type { Tool } from '@/data/projects'
+import type { Tool, ToolIcon } from '@/data/projects'
+
+const ICON_MAP: Record<ToolIcon, typeof Radar> = {
+  radar: Radar,
+  sparkles: Sparkles,
+}
 
 interface BuildTileProps {
   tool: Tool
@@ -12,6 +17,7 @@ interface BuildTileProps {
  * AI tool tile. Pulls the CI and content recommendation apps onto the home page.
  */
 export default function BuildTile({ tool, className }: BuildTileProps) {
+  const Icon = ICON_MAP[tool.icon]
   return (
     <Link
       href={`/build/${tool.slug}`}
@@ -27,7 +33,15 @@ export default function BuildTile({ tool, className }: BuildTileProps) {
     >
       <div className="flex flex-col justify-between h-full p-8 md:p-10 min-h-[420px]">
         <div>
-          <p className="text-label uppercase text-white/80">{tool.label}</p>
+          <div className="flex items-center justify-between">
+            <p className="text-label uppercase text-white/80">{tool.label}</p>
+            <span
+              className="inline-flex h-11 w-11 items-center justify-center rounded-md bg-white/10 border border-white/20 text-white/90 transition-[background-color,transform] duration-standard ease-soft group-hover:bg-white/15 group-hover:-translate-y-0.5"
+              aria-hidden
+            >
+              <Icon size={20} strokeWidth={1.75} />
+            </span>
+          </div>
           <h3 className="mt-4 text-heading-lg md:text-display-sm-fluid text-white">
             {tool.title}
           </h3>
