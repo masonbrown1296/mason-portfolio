@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Container from '@/components/Container'
 import SectionLabel from '@/components/SectionLabel'
 import FadeIn from '@/components/FadeIn'
@@ -154,38 +155,20 @@ export default function ByteSizeCaseStudy() {
             </FadeIn>
 
             <FadeIn delay={80} className="md:col-span-5">
-              <div className="rounded-md border border-neutral-200 bg-white p-8 shadow-inset-hairline">
-                <p className="text-label uppercase text-ember">
-                  Brand system
-                </p>
-                <ul className="mt-5 space-y-4 text-body text-neutral-700">
-                  <li className="flex gap-3">
-                    <span className="text-ember font-mono">01</span>
-                    <span>
-                      Dot-matrix wordmark referencing early computing displays
-                    </span>
-                  </li>
-                  <li className="flex gap-3">
-                    <span className="text-ember font-mono">02</span>
-                    <span>
-                      Chip the mascot, an 8-bit character with expressive range
-                    </span>
-                  </li>
-                  <li className="flex gap-3">
-                    <span className="text-ember font-mono">03</span>
-                    <span>
-                      Retro hardware photography (keyboards, CRTs) as background
-                      texture
-                    </span>
-                  </li>
-                  <li className="flex gap-3">
-                    <span className="text-ember font-mono">04</span>
-                    <span>
-                      Voice guidelines: smart, irreverent, anti-buzzword
-                    </span>
-                  </li>
-                </ul>
-              </div>
+              <figure className="rounded-md overflow-hidden border border-neutral-200 shadow-inset-hairline bg-white">
+                <div className="relative aspect-[800/418]">
+                  <Image
+                    src="/work/bytesize/hero-brand.png"
+                    alt="ByteSize hero brand artwork: dot-matrix wordmark with the Experts Exchange co-brand and the tagline The IT Newsletter That People Actually Read."
+                    fill
+                    sizes="(min-width: 768px) 40vw, 100vw"
+                    className="object-contain"
+                  />
+                </div>
+                <figcaption className="border-t border-neutral-200 px-6 py-4 text-label uppercase text-neutral-500">
+                  The opening spread, issue one
+                </figcaption>
+              </figure>
             </FadeIn>
           </div>
         </Container>

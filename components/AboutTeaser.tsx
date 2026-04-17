@@ -31,23 +31,21 @@ export default function AboutTeaser() {
 
           <FadeIn delay={120} className="md:col-span-7 md:pt-4">
             <h2 className="text-display-md-fluid text-ink max-w-[18ch]">
-              Broadcaster turned marketer turned builder.
+              Marketer. Builder.
             </h2>
             <div className="mt-6 space-y-5 text-body-lg text-neutral-700 max-w-xl">
               <p>
-                Started in sports radio at 19. Pivoted into marketing at a
-                local agency and noticed it was all the same muscle: audience
-                work. Ran a marketing function for five years at an IT
-                community of five million. Now building enterprise buyer
-                intelligence at a Fortune 10 healthtech company, and writing
-                my own AI tools on the side.
+                I run marketing functions end to end and build the AI tools
+                that make the work possible. Newsletter growth, SEO,
+                gamification, rebrand, positioning, enterprise buyer
+                intelligence, AI tooling, sales training. Not a specialist
+                pretending to have range. An operator who has done the work
+                across the funnel.
               </p>
               <p>
-                MBA from Lee. Chicago by way of Tennessee. Coach&apos;s kid.
-                The same instinct that made me a state-championship
-                broadcaster makes me a decent marketer: figure out who&apos;s
-                in the room, figure out what they need, deliver it without
-                performing.
+                Chicago-based. MBA, Lee University. Currently consulting for
+                a Fortune 10 healthtech company and looking for the next seat
+                where the function is mine to own.
               </p>
             </div>
             <Link

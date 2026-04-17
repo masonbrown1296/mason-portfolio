@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ArrowRight, ArrowUpRight, Mic, Megaphone, Terminal } from 'lucide-react'
+import { ArrowRight, ArrowUpRight, LineChart, Compass, Cpu } from 'lucide-react'
 import Container from '@/components/Container'
 import Button from '@/components/Button'
 import CopyEmailButton from '@/components/CopyEmailButton'
@@ -12,30 +12,30 @@ import AboutTeaser from '@/components/AboutTeaser'
 import ContactBlock from '@/components/ContactBlock'
 import { projects, tools, getProject } from '@/data/projects'
 
-const throughline = [
+const chapters = [
   {
-    icon: Mic,
-    chapter: 'Broadcaster',
-    years: '2015 – 2017',
-    title: 'Sports radio at 19.',
+    icon: LineChart,
+    years: '2020 – 2025',
+    where: 'Experts Exchange',
+    title: 'Five years running marketing at a 5M-user community.',
     body:
-      'State-championship broadcasting senior year. Learned to read a room in real time, find the story, and deliver it clean on the first take.',
+      'Inherited a dead list under 10% open rate. Eight months later, ByteSize sat at 200K subscribers, 60% open, $1.65M projected ARR. SEO overhaul across 71K URLs drove 135% traffic growth. Gamification system shipped end to end, PRD through GTM.',
   },
   {
-    icon: Megaphone,
-    chapter: 'Marketer',
-    years: '2017 – present',
-    title: 'Audience work, different tools.',
+    icon: Compass,
+    years: '2025 – present',
+    where: 'Fortune 10 Healthtech',
+    title: 'The first enterprise buyer intelligence program at a Fortune 10 healthtech company.',
     body:
-      'Local agency, then five years running marketing for a 5M-user IT community, now building enterprise buyer intelligence at a Fortune 10 healthtech company.',
+      '300+ hours of primary audience interviews. A 76-slide persona library across four health system verticals. A 5-stage buyer journey architecture now powering their new-market expansion. Flew in to lead the sales training that rolled it out.',
   },
   {
-    icon: Terminal,
-    chapter: 'Builder',
+    icon: Cpu,
     years: '2024 – present',
-    title: 'The tools that make it scale.',
+    where: 'On the side',
+    title: 'Two production AI tools that make the solo claim credible.',
     body:
-      'Two production AI web apps running on real infrastructure. The reason I can credibly say I run an entire marketing function alone.',
+      'A competitive intelligence aggregator that runs on a schedule. A content recommendation engine grounded in a buyer journey I wrote. Real infrastructure, not prompt templates. The proof that one operator can run what used to take a team of five.',
   },
 ]
 
@@ -167,17 +167,17 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* ════════ THROUGHLINE ════════ */}
+      {/* ════════ THE WORK, IN ORDER ════════ */}
       <section className="py-section-lg bg-white border-t border-neutral-200">
         <Container>
           <FadeIn>
-            <SectionLabel>The throughline</SectionLabel>
+            <SectionLabel>The work, in order</SectionLabel>
             <h2 className="mt-5 text-display-md-fluid text-ink max-w-[22ch]">
-              Broadcaster turned marketer turned builder.
+              Three chapters. Same operator.
             </h2>
             <p className="mt-6 text-body-lg text-neutral-600 max-w-xl">
-              Same instinct across three chapters: figure out who&apos;s in the
-              room, figure out what they need, and deliver it without performing.
+              Scope widens, seat changes, the operator doesn&apos;t. Each
+              chapter below is a number on a line I was accountable for.
             </p>
           </FadeIn>
 
@@ -187,10 +187,10 @@ export default function Home() {
               className="hidden md:block absolute left-0 right-0 top-7 h-[2px] bg-neutral-200"
               aria-hidden
             />
-            {throughline.map((t, i) => {
-              const Icon = t.icon
+            {chapters.map((c, i) => {
+              const Icon = c.icon
               return (
-                <FadeIn key={t.chapter} delay={i * 60}>
+                <FadeIn key={c.years} delay={i * 60}>
                   <li className="relative rounded-md border border-neutral-200 bg-off-white p-7 shadow-inset-hairline h-full flex flex-col">
                     <div className="flex items-center gap-4">
                       <span className="inline-flex h-14 w-14 items-center justify-center rounded-md bg-ink text-white shrink-0">
@@ -201,17 +201,15 @@ export default function Home() {
                           Chapter 0{i + 1}
                         </p>
                         <p className="mt-1 text-[13px] text-neutral-500 tabular-nums">
-                          {t.years}
+                          {c.years}
                         </p>
                       </div>
                     </div>
-                    <h3 className="mt-6 text-heading-md text-ink">
-                      {t.chapter}
-                    </h3>
-                    <p className="mt-1 text-[15px] font-medium text-ink">
-                      {t.title}
+                    <p className="mt-6 text-label uppercase text-neutral-400">
+                      {c.where}
                     </p>
-                    <p className="mt-4 text-body text-neutral-600">{t.body}</p>
+                    <h3 className="mt-2 text-heading-sm text-ink">{c.title}</h3>
+                    <p className="mt-4 text-body text-neutral-600">{c.body}</p>
                   </li>
                 </FadeIn>
               )

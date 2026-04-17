@@ -26,9 +26,29 @@ const screens = [
     body: 'Ninety-plus hexagonal pixel badges with four-tier progression (Advisor, Tutor, Teacher, Mentor). Native to the developer aesthetic.',
   },
   {
+    src: '/work/gamification/challenges.png',
+    title: 'Seasonal challenges',
+    body: 'Time-limited achievement bundles with exclusive completion rewards. Startup challenges permanent, seasonal themes rotate.',
+  },
+  {
+    src: '/work/gamification/certifications.png',
+    title: 'Topic certifications',
+    body: 'Twenty-tier metallic badges per topic, designed to travel to LinkedIn, X, and resumes. Bronze through iridescent.',
+  },
+  {
+    src: '/work/gamification/trophy-room.png',
+    title: 'Trophy room',
+    body: 'A dark, cinematic standalone page built for external sharing. Tabs for Certifications, Levels, Achievements, and Awards.',
+  },
+  {
     src: '/work/gamification/rewards.png',
     title: 'Physical rewards',
     body: 'T-shirts, hats, hoodies, mugs, backpacks, portable monitors, Funko Pops, a framed 1M-point certificate. Fifteen-plus tiers of actual swag.',
+  },
+  {
+    src: '/work/gamification/notifications.png',
+    title: 'Toast notifications',
+    body: 'Real-time level-up and achievement pings. Designed to land hard on the moment of earn without stalling the user flow.',
   },
 ]
 
@@ -399,12 +419,14 @@ export default function GamificationCaseStudy() {
           <FadeIn>
             <SectionLabel>In the product</SectionLabel>
             <h2 className="mt-5 text-display-md-fluid text-ink max-w-[24ch]">
-              Four surfaces from the shipped system.
+              Eight surfaces from the shipped system.
             </h2>
             <p className="mt-6 text-body-lg text-neutral-700 max-w-2xl">
-              Figma to dev to live: the dashboard users see when they log in,
-              the levels page, the achievement grid, and the physical reward
-              ladder that runs alongside the points.
+              Figma to dev to live. The dashboard users see when they log in,
+              the levels page, the achievement grid, seasonal challenges,
+              topic certifications, the trophy room built for external
+              sharing, the physical reward ladder, and the moment-of-earn
+              toasts.
             </p>
           </FadeIn>
 
