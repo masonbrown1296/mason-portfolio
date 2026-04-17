@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Download, Mail, Linkedin, Lock } from 'lucide-react'
+import { Download, Mail, Linkedin, Lock, FileText, Briefcase, ArrowDown } from 'lucide-react'
 import Nav from '@/components/Nav'
 import HeroCanvas from '@/components/HeroCanvas'
 import SectionLabel from '@/components/SectionLabel'
@@ -86,18 +86,28 @@ export default function Home() {
           >
             <a
               href="#work"
-              className="bg-[var(--red)] text-white font-body font-semibold px-8 py-3 rounded-lg hover:glow-red transition-shadow"
+              className="flex items-center gap-2 bg-[var(--red)] text-white font-body font-semibold px-8 py-3 rounded-lg hover:glow-red transition-shadow"
             >
+              <ArrowDown size={16} />
               View My Work
             </a>
             <a
               href="/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
+              className="flex items-center gap-2 bg-[var(--red)] text-white font-body font-semibold px-8 py-3 rounded-lg hover:glow-red transition-shadow"
+            >
+              <FileText size={16} />
+              Download Resume
+            </a>
+            <a
+              href="/case-studies/mason-brown-growth-portfolio.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-2 border border-[var(--border-dark)] text-[var(--text-muted)] font-body font-medium px-8 py-3 rounded-lg hover:border-[var(--text-muted)] transition-colors"
             >
-              <Download size={16} />
-              Download Resume
+              <Briefcase size={16} />
+              Download Portfolio
             </a>
           </motion.div>
         </div>
