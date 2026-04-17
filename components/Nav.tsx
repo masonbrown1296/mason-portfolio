@@ -1,7 +1,7 @@
 'use client'
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Download } from 'lucide-react'
+import { Menu, X, Download, Briefcase } from 'lucide-react'
 import Link from 'next/link'
 
 const links = [
@@ -47,6 +47,15 @@ export default function Nav() {
                 {l.label}
               </a>
             ))}
+            <a
+              href="/case-studies/mason-brown-growth-portfolio.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-sm font-body border border-[var(--border-dark)] text-[var(--text-muted)] rounded-lg px-4 py-2 hover:border-[var(--text-muted)] hover:text-[var(--text-dark)] transition-colors"
+            >
+              <Briefcase size={14} />
+              Portfolio
+            </a>
             <a
               href="/resume.pdf"
               target="_blank"
@@ -94,6 +103,15 @@ export default function Nav() {
                 {l.label}
               </a>
             ))}
+            <a
+              href="/case-studies/mason-brown-growth-portfolio.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-lg font-body border border-[var(--border-dark)] text-[var(--text-muted)] rounded-lg px-6 py-3"
+            >
+              <Briefcase size={18} />
+              Portfolio
+            </a>
             <a
               href="/resume.pdf"
               target="_blank"

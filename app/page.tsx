@@ -85,13 +85,6 @@ export default function Home() {
             transition={{ duration: 0.4, delay: 0.6 }}
           >
             <a
-              href="#work"
-              className="flex items-center gap-2 bg-[var(--red)] text-white font-body font-semibold px-8 py-3 rounded-lg hover:glow-red transition-shadow"
-            >
-              <ArrowDown size={16} />
-              View My Work
-            </a>
-            <a
               href="/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
@@ -104,7 +97,7 @@ export default function Home() {
               href="/case-studies/mason-brown-growth-portfolio.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 border border-[var(--border-dark)] text-[var(--text-muted)] font-body font-medium px-8 py-3 rounded-lg hover:border-[var(--text-muted)] transition-colors"
+              className="flex items-center gap-2 bg-[#1C1917] border border-[#3D3A37] text-[var(--text-muted)] font-body font-medium px-8 py-3 rounded-lg hover:border-[var(--text-muted)] hover:text-[var(--text-dark)] transition-colors"
             >
               <Briefcase size={16} />
               Download Portfolio
