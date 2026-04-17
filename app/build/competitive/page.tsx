@@ -18,7 +18,7 @@ export const metadata = {
 const problems = [
   {
     label: 'High-effort, low-frequency',
-    body: 'Nobody has time for weekly CI, so it happens right before conferences or launches — when it\'s most stressful and least rigorous.',
+    body: 'Nobody has time for weekly CI, so it happens right before conferences or launches, when it\'s most stressful and least rigorous.',
   },
   {
     label: 'Fragmented sources',
@@ -192,7 +192,7 @@ export default function CompetitiveToolPage() {
             </h2>
             <p className="mt-6 text-body-lg text-neutral-700 max-w-2xl">
               The app runs in production. An interactive demo or walkthrough
-              lands here next — happy to walk through it live before then.
+              lands here next. Happy to walk through it live before then.
             </p>
           </FadeIn>
 
@@ -239,7 +239,7 @@ export default function CompetitiveToolPage() {
                 replaced all three with something that runs on a schedule.
               </p>
               <p>
-                The hardest part wasn&apos;t the APIs — it was the prompt
+                The hardest part wasn&apos;t the APIs. It was the prompt
                 engineering for synthesis. Raw competitor data is noise.
                 Getting Claude to output a battlecard a rep can actually use
                 in a call required tight schema design, few-shot examples from

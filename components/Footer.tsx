@@ -1,5 +1,7 @@
+'use client'
 import Link from 'next/link'
 import Container from './Container'
+import { EMAIL_ADDRESS, copyEmail } from '@/lib/copyEmail'
 
 const navLinks = [
   { label: 'Work', href: '/work' },
@@ -8,9 +10,8 @@ const navLinks = [
 ]
 
 const socialLinks = [
-  { label: 'Email', href: 'mailto:masonbrown1296@gmail.com', external: true },
-  { label: 'LinkedIn', href: 'https://linkedin.com/in/masonbrown1296', external: true },
-  { label: 'GitHub', href: 'https://github.com/masonbrown1296', external: true },
+  { label: 'LinkedIn', href: 'https://linkedin.com/in/masonbrown1296' },
+  { label: 'GitHub', href: 'https://github.com/masonbrown1296' },
 ]
 
 export default function Footer() {
@@ -26,12 +27,13 @@ export default function Footer() {
             <p className="mt-3 text-body text-neutral-600 max-w-sm">
               Marketing leader. Builder of AI tools. Chicago, remote-first.
             </p>
-            <a
-              href="mailto:masonbrown1296@gmail.com"
-              className="mt-6 inline-block text-body text-ink link-underline"
+            <button
+              type="button"
+              onClick={() => copyEmail()}
+              className="mt-6 inline-block text-body text-ink link-underline text-left"
             >
-              masonbrown1296@gmail.com
-            </a>
+              {EMAIL_ADDRESS}
+            </button>
           </div>
 
           {/* Middle: site nav */}
@@ -59,14 +61,23 @@ export default function Footer() {
                 <li key={l.label}>
                   <a
                     href={l.href}
-                    target={l.external ? '_blank' : undefined}
-                    rel={l.external ? 'noopener noreferrer' : undefined}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="text-body text-neutral-700 hover:text-ink transition-colors duration-micro"
                   >
                     {l.label}
                   </a>
                 </li>
               ))}
+              <li>
+                <button
+                  type="button"
+                  onClick={() => copyEmail()}
+                  className="text-body text-neutral-700 hover:text-ink transition-colors duration-micro text-left"
+                >
+                  Email
+                </button>
+              </li>
             </ul>
           </div>
         </div>

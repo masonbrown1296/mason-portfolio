@@ -17,7 +17,7 @@ export default function PullQuote({
       </blockquote>
       {attribution && (
         <figcaption className="mt-4 text-label uppercase text-neutral-500">
-          — {attribution}
+          {attribution}
         </figcaption>
       )}
     </figure>

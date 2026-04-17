@@ -102,8 +102,8 @@ export default function RecommendationToolPage() {
               </p>
               <p>
                 I built this to close the gap between the buyer intelligence
-                work I was doing — personas, stages, objections, stakeholder
-                maps — and the content that should show up at each moment.
+                work I was doing (personas, stages, objections, stakeholder
+                maps) and the content that should show up at each moment.
                 You tell the app which stakeholder you&apos;re selling to,
                 what stage the deal is in, and what objection is blocking
                 you. It returns ranked assets with reasoning.
@@ -226,7 +226,7 @@ export default function RecommendationToolPage() {
             </h2>
             <p className="mt-6 text-body-lg text-neutral-700 max-w-2xl">
               The app runs in production against a real content library. An
-              interactive walkthrough lands here next — happy to demo it live
+              interactive walkthrough lands here next. Happy to demo it live
               before then.
             </p>
           </FadeIn>

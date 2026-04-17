@@ -7,85 +7,48 @@ import ContactBlock from '@/components/ContactBlock'
 export const metadata = {
   title: 'About',
   description:
-    'Broadcaster turned marketer turned builder. Coach\'s kid, Chicago by way of Tennessee, MBA, running marketing functions end to end with AI as infrastructure.',
+    'Marketer and builder. Chicago, remote-first. Running marketing functions end to end with AI tooling as infrastructure.',
 }
 
 const chapters = [
   {
-    label: 'The beginning',
-    heading: 'Coach\'s kid, homeschooled through third grade, comfortable being the youngest in the room.',
+    label: '2020-2025',
+    heading: 'Five years running marketing at an IT community of 5 million developers.',
     body: [
-      `Dad is a college basketball coach. I grew up around older, worldlier
-       people from infancy. Athletes, coaches, staff. By the time I was 12
-       I\'d been on basketball trips through Germany, Belgium, Holland, the
-       Dominican Republic. Saw things a 12-year-old probably shouldn\'t see.
-       I\'m glad I did.`,
-      `Public school in Cleveland, Tennessee after a stretch at McCallie on
-       a basketball scholarship. Basketball team captain. Student section
-       leader. PA announcer for the school TV station. Lead anchor on the
-       morning news. Voted Mr. CHS senior year. Spoke at graduation.
-       Leadership and communication were there before work was.`,
-    ],
-  },
-  {
-    label: 'The pivot',
-    heading: 'Sports radio at 19, agency at 22, realization that it was all audience work.',
-    body: [
-      `First job was radio DJ and engineer at Mix 104.1 in Cleveland. At
-       MTSU I landed an internship at ESPN Radio Nashville that turned into
-       a producer role on weekend NFL and college football coverage. 19 years
-       old, running board for a syndicated sports station. Loved it.`,
-      `When my parents divorced I moved home, transferred to UT Chattanooga,
-       and took a job at a small digital agency on the side. Video guy,
-       copywriter, brand maker, across 25+ local clients. Shot TV
-       commercials that actually ran on TV. Designed a logo for a pediatric
-       clinic that\'s still in use today. By the end of my time there the
-       senior people were coming to me for expertise, and I realized: this
-       is what I\'d already been doing my whole life. Broadcasting, the
-       school TV, the school radio. It was all audience work. "Marketing"
-       was just the professional name for it.`,
-    ],
-  },
-  {
-    label: 'The run',
-    heading: 'Five years at an IT community of 5M, one-way ticket to Chicago, an MBA on the side.',
-    body: [
-      `Experts Exchange hired me for my podcast production and turned me
-       into their marketing lead. Took a dead email list under 10% open
-       rate and built ByteSize to 200K subscribers at 60% open in under
-       eight months. $1.65M projected ARR. Led an SEO overhaul that upgraded
+      `Experts Exchange hired me to lead marketing for a community product in
+       a crowded developer tools market. I inherited a dead email list under
+       10% open rate. In eight months I built ByteSize to 200K subscribers at
+       60% open. $1.65M projected ARR.`,
+      `From there the scope kept widening. I led an SEO overhaul that upgraded
        71,000 URLs and drove 135% traffic growth. Implemented Amplitude from
-       scratch, found the activation moment via A/B test, lifted trial
-       signups 30%. Shipped a gamification system end to end, PRD through
-       Figma through GTM. Ran positioning on the April Dunford methodology
-       and rebuilt the full messaging hierarchy.`,
-      `Somewhere in there I bought a one-way ticket to Chicago without
-       knowing a single person. Moved into a room in a Wrigleyville house
-       and built a life here. My managers at EE were so impressed by the
-       boldness they gave me a raise. I finished an MBA from Lee while
+       scratch, found the activation moment via A/B test, lifted trial signups
+       30%. Shipped a gamification system end to end, PRD through Figma
+       through GTM. Ran positioning on the April Dunford methodology and
+       rebuilt the full messaging hierarchy.`,
+      `Somewhere in there I bought a one-way ticket to Chicago without knowing
+       a single person and built a life here. Finished an MBA from Lee while
        working full time. Four years in, Chicago is home.`,
     ],
   },
   {
-    label: 'Now',
-    heading: 'Building enterprise buyer intelligence at a Fortune 10 healthtech company. Writing AI tools on the side.',
+    label: '2025-present',
+    heading: 'Built the first-ever enterprise buyer intelligence program at a Fortune 10 healthtech company. Shipped the AI tools that made it possible.',
     body: [
-      `Walked in with no healthtech background and built the first-ever
-       enterprise buyer intelligence program there. 300+ hours of primary
-       audience interviews. A 76-slide persona library across four health
-       system verticals. A 39-slide buyer journey architecture mapping the
-       5-stage, 7-to-13-month non-linear enterprise buying cycle. A
-       proprietary framework called the Four Engines that maps the four
-       competing forces every major healthcare purchase has to satisfy.
-       All of it is now the GTM foundation for their expansion into a new
-       market, and I flew in to lead the in-person sales training that
-       rolled it out to the field team.`,
-      `I also built two production AI tools while doing it. A competitive
-       intelligence aggregator that runs on a schedule, and a content
-       recommendation engine grounded in the buyer journey I wrote. The
-       tools aren\'t a side project. They\'re the infrastructure that makes
-       it possible for one person to run what used to take five. That\'s
-       the claim, and the tools are the proof.`,
+      `Walked in with no healthtech background. 300+ hours of primary audience
+       interviews. A 76-slide persona library across four health system
+       verticals. A 39-slide buyer journey architecture mapping the 5-stage,
+       7-to-13-month non-linear enterprise buying cycle. A proprietary
+       framework called the Four Engines that maps the four competing forces
+       every major healthcare purchase has to satisfy. All of it is now the
+       GTM foundation for their expansion into a new market. I flew in to
+       lead the in-person sales training that rolled it out to the field
+       team.`,
+      `I also shipped two production AI tools while the program was taking
+       shape. A competitive intelligence aggregator that runs on a schedule,
+       and a content recommendation engine grounded in the buyer journey I
+       wrote. The tools are not a side project. They are the infrastructure
+       that makes it possible for one person to run what used to take five.
+       That is the claim. The tools are the proof.`,
     ],
   },
 ]
@@ -123,17 +86,17 @@ export default function AboutPage() {
             <FadeIn trigger="mount" className="md:col-span-7">
               <SectionLabel>About</SectionLabel>
               <h1 className="mt-5 text-display-lg-fluid text-ink max-w-[18ch]">
-                Broadcaster. Marketer. Builder.
+                Marketer. Builder.
               </h1>
               <p className="mt-8 text-body-lg text-neutral-700 max-w-xl">
-                I&apos;ve always been drawn to communication, audience
-                understanding, and making things that connect with people.
-                The job titles changed. The pattern didn&apos;t.
+                I run marketing functions end to end and build the AI tools
+                that make the work possible. Range is real or it&apos;s
+                nothing.
               </p>
               <p className="mt-4 text-body text-neutral-600 max-w-xl">
-                Chicago by way of Cleveland, Tennessee. MBA, Lee University.
-                Currently consulting for a Fortune 10 healthtech company and
-                actively searching for senior marketing roles.
+                Chicago-based. MBA, Lee University. Currently consulting for
+                a Fortune 10 healthtech company and looking for the next seat
+                where the function is mine to own.
               </p>
             </FadeIn>
 
@@ -159,9 +122,9 @@ export default function AboutPage() {
       <section className="py-section-lg bg-off-white border-y border-neutral-200">
         <Container width="narrow">
           <FadeIn>
-            <SectionLabel>The chapters</SectionLabel>
-            <h2 className="mt-5 text-display-md-fluid text-ink max-w-[20ch]">
-              The throughline, told straight.
+            <SectionLabel>The work, in order</SectionLabel>
+            <h2 className="mt-5 text-display-md-fluid text-ink max-w-[22ch]">
+              Two chapters. Same operator.
             </h2>
           </FadeIn>
 
@@ -220,20 +183,25 @@ export default function AboutPage() {
         <Container width="narrow">
           <FadeIn>
             <SectionLabel>Right now</SectionLabel>
-            <h2 className="mt-5 text-display-md-fluid text-ink">
-              What I&apos;m looking for.
+            <h2 className="mt-5 text-display-md-fluid text-ink max-w-[22ch]">
+              A seat where the outcome is mine.
             </h2>
             <div className="mt-8 space-y-5 text-body-lg text-neutral-700">
               <p>
                 Senior PMM, Growth Marketing Manager, Head of Marketing, or
-                VP-level roles. Healthtech, B2B SaaS, cybersecurity, growth-stage
+                VP-level. Healthtech, B2B SaaS, cybersecurity, growth-stage
                 companies. Remote-first. Chicago-based, open to hybrid.
               </p>
               <p>
-                I work best at companies where marketing is a real leverage
-                point and where shipping is valued over performing. If that
-                sounds like you, the contact form is a mailto link at the
-                bottom of every page. Send the note.
+                What I want is ownership. A function that is mine to build or
+                rebuild, a number on the line that I am accountable for, and
+                a team or a solo seat where shipping is how we keep score. My
+                best work has always come when the weight of the outcome sat
+                on my desk. I want more of that, not less.
+              </p>
+              <p>
+                If that is the seat you are filling, the contact button lives
+                at the bottom of every page. Send the note.
               </p>
             </div>
           </FadeIn>

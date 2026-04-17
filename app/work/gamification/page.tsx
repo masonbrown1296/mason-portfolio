@@ -168,7 +168,7 @@ export default function GamificationCaseStudy() {
             <p className="mt-6 text-body-lg text-neutral-700 max-w-2xl">
               Each phase introduced new functionality while preserving
               stability. The PRD I wrote sequenced the work so every release
-              layered cleanly on the last — and so the team could show internal
+              layered cleanly on the last, and the team could show internal
               wins at every step.
             </p>
           </FadeIn>
@@ -220,7 +220,7 @@ export default function GamificationCaseStudy() {
             </h2>
             <p className="mt-6 text-body-lg text-neutral-700 max-w-2xl">
               Icons reset every tier so milestone moments happen 7 times, not
-              once. Physical rewards attach at every tier — the only technical
+              once. Physical rewards attach at every tier. The only technical
               community offering real swag to all contributors, not just top
               performers.
             </p>

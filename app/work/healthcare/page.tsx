@@ -20,7 +20,7 @@ const methodology = [
   {
     n: '01',
     label: 'Targeted Discovery',
-    body: 'Curated 150+ high-impact primary research reports, executive surveys, and industry outlooks spanning 2020 to 2025. Pulled from the stakeholders health system leaders actually read — WittKieffer, HIMSS, HFMA, Bain, KLAS, Deloitte, Chartis.',
+    body: 'Curated 150+ high-impact primary research reports, executive surveys, and industry outlooks spanning 2020 to 2025. Pulled from the stakeholders health system leaders actually read: WittKieffer, HIMSS, HFMA, Bain, KLAS, Deloitte, Chartis.',
   },
   {
     n: '02',
@@ -121,7 +121,7 @@ const personaRows: { label: string; cells: string[] }[] = [
   {
     label: 'Core Mandate',
     cells: [
-      'Makes sure technology works for the system — deciding what gets bought and how systems fit together.',
+      'Makes sure technology works for the system. Decides what gets bought and how systems fit together.',
       'Focused on where the organization is going in 5+ years, connecting market trends to digital strategy.',
       'Protects patient data and keeps systems running, balancing security, compliance, and usability.',
     ],
@@ -285,7 +285,7 @@ export default function HealthcareCaseStudy() {
               Every major health system decision requires alignment across
               leaders with fundamentally incompatible success metrics. The Four
               Engines model maps the competing forces every major healthcare
-              purchase has to satisfy — and shows sellers which tensions they
+              purchase has to satisfy, and shows sellers which tensions they
               have to resolve to win the room.
             </p>
           </FadeIn>
@@ -326,7 +326,7 @@ export default function HealthcareCaseStudy() {
       <section className="py-section-lg bg-white">
         <Container>
           <FadeIn>
-            <SectionLabel dotColor="#D94F1E">Deep dive — Engine 01</SectionLabel>
+            <SectionLabel dotColor="#D94F1E">Deep dive: Engine 01</SectionLabel>
             <h2 className="mt-5 text-display-md-fluid text-ink max-w-[26ch]">
               Inside the Digital &amp; Strategic Engine.
             </h2>
@@ -372,16 +372,207 @@ export default function HealthcareCaseStudy() {
         </Container>
       </section>
 
-      {/* ════════ PERSONA COMPARISON TABLE ════════ */}
-      <section className="pb-section-lg bg-white">
+      {/* ════════ PERSONA SPOTLIGHT: STRATEGIC TECH LEADER ════════ */}
+      <section className="py-section-lg bg-off-white border-y border-neutral-200">
         <Container>
           <FadeIn>
-            <p className="text-label uppercase text-neutral-500">
-              The three leaders inside Engine 01
+            <SectionLabel dotColor="#D94F1E">Persona spotlight</SectionLabel>
+            <h2 className="mt-5 text-display-md-fluid text-ink max-w-[26ch]">
+              The Strategic Tech Leader.
+            </h2>
+            <p className="mt-4 text-heading-md italic text-ember max-w-2xl">
+              The Architect of Enterprise Value Through Technology.
             </p>
-            <h3 className="mt-3 text-display-sm-fluid text-ink max-w-[24ch]">
+            <p className="mt-6 text-body-lg text-neutral-700 max-w-2xl">
+              Every persona in the library gets this treatment. For the case
+              study, one stands in for the method. This is what a single
+              archetype looks like when you combine 10 to 15 primary sources,
+              10 to 12 live job postings, and the Gartner persona and buyer
+              journey templates into a portrait a seller can actually use.
+            </p>
+          </FadeIn>
+
+          <div className="mt-16 grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-12">
+            {/* Left: identity card */}
+            <FadeIn className="md:col-span-5" delay={40}>
+              <div className="rounded-md border border-neutral-200 bg-white p-8 shadow-inset-hairline">
+                <p className="text-label uppercase text-neutral-500">
+                  Common titles
+                </p>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {['CIO', 'SVP & CIO', 'CDIO', 'CDO', 'CTO', 'CHIO', 'VP of IT'].map((t) => (
+                    <span
+                      key={t}
+                      className="inline-flex items-center rounded-full border border-neutral-200 bg-off-white px-3 py-1 text-[13px] font-medium text-neutral-700"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="mt-8 space-y-5">
+                  <div>
+                    <p className="text-label uppercase text-neutral-500">
+                      Reports to
+                    </p>
+                    <p className="mt-2 text-body text-neutral-700">
+                      CEO or COO. Sits on the executive committee.
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-label uppercase text-neutral-500">
+                      Owns
+                    </p>
+                    <p className="mt-2 text-body text-neutral-700">
+                      Enterprise IT architecture, EHR integration, cloud
+                      strategy, and the digital transformation roadmap.
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-label uppercase text-neutral-500">
+                      Budget authority
+                    </p>
+                    <p className="mt-2 text-body text-neutral-700">
+                      $50M to $500M+ annual tech spend depending on system
+                      size.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="mt-8 pt-6 border-t border-neutral-200">
+                  <p className="text-label uppercase text-neutral-500">
+                    Sources triangulated
+                  </p>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {['WittKieffer', 'KLAS', 'HIMSS', 'Gartner', 'Bain', 'Chartis'].map(
+                      (s) => (
+                        <span
+                          key={s}
+                          className="inline-flex items-center rounded-full border border-ember/30 bg-ember/5 px-2.5 py-0.5 text-[12px] font-medium text-ember"
+                        >
+                          {s}
+                        </span>
+                      )
+                    )}
+                  </div>
+                </div>
+              </div>
+            </FadeIn>
+
+            {/* Right: editorial narrative */}
+            <FadeIn className="md:col-span-7" delay={80}>
+              <div className="space-y-10">
+                <div>
+                  <p className="text-label uppercase text-ember">
+                    The mandate
+                  </p>
+                  <p className="mt-3 text-body-lg text-neutral-700">
+                    Make sure technology works for the whole system. Decide
+                    what gets bought and how it fits together. Convert capital
+                    spend into clinical, operational, and financial outcomes
+                    that show up on a board deck.
+                  </p>
+                </div>
+
+                <div>
+                  <p className="text-label uppercase text-ember">
+                    What keeps them up at night
+                  </p>
+                  <ul className="mt-4 space-y-3">
+                    <li className="pl-5 border-l-2 border-ember/50 text-body-lg text-neutral-700">
+                      Disparate legacy systems and limited EHR interoperability
+                      that make every new initiative land on top of a broken
+                      foundation.
+                    </li>
+                    <li className="pl-5 border-l-2 border-ember/50 text-body-lg text-neutral-700">
+                      A board asking where the ROI is on the last three digital
+                      transformation initiatives.
+                    </li>
+                    <li className="pl-5 border-l-2 border-ember/50 text-body-lg text-neutral-700">
+                      A CISO and a Strategy Executive pulling the roadmap in
+                      two different directions in the same meeting.
+                    </li>
+                  </ul>
+                </div>
+
+                <div>
+                  <p className="text-label uppercase text-ember">
+                    How they evaluate
+                  </p>
+                  <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="rounded-md border border-neutral-200 bg-white p-5 shadow-inset-hairline">
+                      <p className="text-label uppercase text-neutral-500">
+                        Trusted metric
+                      </p>
+                      <p className="mt-2 text-body text-ink">
+                        Demonstrated ROI from IT initiatives. Measured
+                        clinically, operationally, and financially.
+                      </p>
+                    </div>
+                    <div className="rounded-md border border-neutral-200 bg-white p-5 shadow-inset-hairline">
+                      <p className="text-label uppercase text-neutral-500">
+                        Must-haves
+                      </p>
+                      <p className="mt-2 text-body text-ink">
+                        Proven EHR integration. Standardized, scalable
+                        solutions. A deployment story that does not set their
+                        team on fire.
+                      </p>
+                    </div>
+                    <div className="rounded-md border border-neutral-200 bg-white p-5 shadow-inset-hairline">
+                      <p className="text-label uppercase text-neutral-500">
+                        Deal-breakers
+                      </p>
+                      <p className="mt-2 text-body text-ink">
+                        Vague ROI. Point solutions that add complexity.
+                        Anything that requires the CISO to sign a waiver.
+                      </p>
+                    </div>
+                    <div className="rounded-md border border-neutral-200 bg-white p-5 shadow-inset-hairline">
+                      <p className="text-label uppercase text-neutral-500">
+                        Preferred content
+                      </p>
+                      <p className="mt-2 text-body text-ink">
+                        Peer case studies from comparable systems. Technical
+                        deep-dives their architects can validate. TCO models.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <p className="text-label uppercase text-ember">
+                    The seller&apos;s job, translated
+                  </p>
+                  <p className="mt-3 text-body-lg text-neutral-700">
+                    Show up with integration evidence, not integration
+                    promises. Bring a peer reference before the first demo.
+                    Anticipate the CISO&apos;s objections and answer them in
+                    the same deck. Quantify the clinical and operational
+                    outcome, not just the technology. Leave them with
+                    something they can walk into the board meeting and
+                    defend.
+                  </p>
+                </div>
+              </div>
+            </FadeIn>
+          </div>
+        </Container>
+      </section>
+
+      {/* ════════ PERSONA COMPARISON TABLE ════════ */}
+      <section className="py-section-lg bg-white">
+        <Container>
+          <FadeIn>
+            <SectionLabel>Side by side</SectionLabel>
+            <h3 className="mt-5 text-display-sm-fluid text-ink max-w-[24ch]">
               Same room. Same deal. Three incompatible scorecards.
             </h3>
+            <p className="mt-5 text-body-lg text-neutral-700 max-w-2xl">
+              The spotlight above shows depth for one persona. This grid shows
+              breadth across all three inside Engine 01, so you can see how
+              their mandates, fears, and decision criteria collide.
+            </p>
 
             {/* Desktop: grid table */}
             <div className="mt-12 hidden md:grid md:grid-cols-[180px_1fr_1fr_1fr] border-t border-neutral-200">
@@ -541,8 +732,7 @@ export default function HealthcareCaseStudy() {
             </ul>
             <p className="mt-10 text-body text-neutral-600">
               The full decks are under NDA. Happy to walk through them in
-              conversation — the contact form is a mailto at the bottom of every
-              page.
+              conversation. Tap the Get in touch button at the top of any page.
             </p>
           </FadeIn>
         </Container>

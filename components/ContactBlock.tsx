@@ -5,8 +5,9 @@ import Container from './Container'
 import SectionLabel from './SectionLabel'
 import FadeIn from './FadeIn'
 import { cn } from '@/lib/utils'
+import { EMAIL_ADDRESS, copyEmail } from '@/lib/copyEmail'
 
-const EMAIL = 'masonbrown1296@gmail.com'
+const EMAIL = EMAIL_ADDRESS
 
 const links = [
   {
@@ -32,12 +33,10 @@ export default function ContactBlock({ className, variant = 'section' }: Contact
   const [copied, setCopied] = useState(false)
 
   const onCopy = async () => {
-    try {
-      await navigator.clipboard.writeText(EMAIL)
+    const ok = await copyEmail()
+    if (ok) {
       setCopied(true)
       setTimeout(() => setCopied(false), 2000)
-    } catch {
-      // Clipboard unavailable; the mailto link still works.
     }
   }
 
@@ -63,12 +62,13 @@ export default function ContactBlock({ className, variant = 'section' }: Contact
             <div className="md:col-span-7 flex flex-col gap-3">
               <p className="text-label uppercase text-neutral-500">Email</p>
               <div className="flex flex-wrap items-center gap-3">
-                <a
-                  href={`mailto:${EMAIL}`}
-                  className="text-display-sm-fluid text-ink link-underline"
+                <button
+                  type="button"
+                  onClick={onCopy}
+                  className="text-display-sm-fluid text-ink link-underline text-left"
                 >
                   {EMAIL}
-                </a>
+                </button>
                 <button
                   type="button"
                   onClick={onCopy}

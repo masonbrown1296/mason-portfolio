@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import { Plus_Jakarta_Sans } from 'next/font/google'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
+import Toast from '@/components/Toast'
 import './globals.css'
 
 const jakarta = Plus_Jakarta_Sans({
@@ -14,8 +15,8 @@ const jakarta = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL('https://masonbrown.co'),
   title: {
-    default: 'Mason Brown — A marketer who ships.',
-    template: '%s — Mason Brown',
+    default: 'Mason Brown · A marketer who ships.',
+    template: '%s · Mason Brown',
   },
   description:
     'I build marketing functions end to end, from brand through growth through enablement. I also build the AI tools that make the work possible.',
@@ -36,13 +37,13 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://masonbrown.co',
     siteName: 'Mason Brown',
-    title: 'Mason Brown — A marketer who ships.',
+    title: 'Mason Brown · A marketer who ships.',
     description:
       'Senior marketing leader. Builder of AI tools. Chicago, remote-first.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Mason Brown — A marketer who ships.',
+    title: 'Mason Brown · A marketer who ships.',
     description:
       'Senior marketing leader. Builder of AI tools. Chicago, remote-first.',
   },
@@ -67,6 +68,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Nav />
         <main id="main">{children}</main>
         <Footer />
+        <Toast />
       </body>
     </html>
   )

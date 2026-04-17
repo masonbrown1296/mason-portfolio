@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import Button from './Button'
+import CopyEmailButton from './CopyEmailButton'
 
 const links = [
   { label: 'Work', href: '/work' },
@@ -76,13 +77,32 @@ export default function Nav() {
           <Link
             href="/"
             className={cn(
-              'text-[15px] font-semibold tracking-[-0.01em] transition-colors duration-micro',
+              'inline-flex items-center gap-2 text-[15px] font-semibold tracking-[-0.01em] transition-colors duration-micro',
               useWhite
                 ? 'text-white hover:text-white/80'
                 : 'text-ink hover:text-ember'
             )}
           >
-            Mason Brown
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 64 64"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+              className="shrink-0"
+            >
+              <rect
+                width="64"
+                height="64"
+                rx="14"
+                fill={useWhite ? '#FAFAF8' : '#0A0A0A'}
+              />
+              <path
+                d="M14 46V18h5.6l8.2 18.5h.3L36.3 18H42v28h-4.2V27.4h-.2l-7.4 16.4h-3.5l-7.4-16.4h-.2V46H14z"
+                fill={useWhite ? '#1A1A1A' : '#FAFAF8'}
+              />
+            </svg>
+            <span>Mason Brown</span>
           </Link>
 
           {/* Desktop links */}
@@ -121,22 +141,13 @@ export default function Nav() {
             >
               Resume
             </a>
-            {useWhite ? (
-              <a
-                href="mailto:masonbrown1296@gmail.com"
-                className="inline-flex items-center justify-center h-9 px-4 text-[13px] font-medium rounded-sm bg-white text-ink hover:bg-white/90 transition-[background-color] duration-micro ease-natural"
-              >
-                Get in touch
-              </a>
-            ) : (
-              <Button
-                href="mailto:masonbrown1296@gmail.com"
-                variant="primary"
-                size="sm"
-              >
-                Get in touch
-              </Button>
-            )}
+            <CopyEmailButton
+              variant={useWhite ? 'inverted' : 'primary'}
+              size="sm"
+              showIcon={false}
+            >
+              Get in touch
+            </CopyEmailButton>
           </div>
 
           {/* Mobile menu trigger */}
@@ -166,10 +177,24 @@ export default function Nav() {
           <div className="flex items-center justify-between h-[var(--nav-height)] px-6 border-b border-neutral-200">
             <Link
               href="/"
-              className="text-[15px] font-semibold tracking-[-0.01em] text-ink"
+              className="inline-flex items-center gap-2 text-[15px] font-semibold tracking-[-0.01em] text-ink"
               onClick={() => setMobileOpen(false)}
             >
-              Mason Brown
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 64 64"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+                className="shrink-0"
+              >
+                <rect width="64" height="64" rx="14" fill="#0A0A0A" />
+                <path
+                  d="M14 46V18h5.6l8.2 18.5h.3L36.3 18H42v28h-4.2V27.4h-.2l-7.4 16.4h-3.5l-7.4-16.4h-.2V46H14z"
+                  fill="#FAFAF8"
+                />
+              </svg>
+              <span>Mason Brown</span>
             </Link>
             <button
               type="button"
@@ -194,14 +219,13 @@ export default function Nav() {
               ))}
             </nav>
             <div className="flex flex-col gap-3">
-              <Button
-                href="mailto:masonbrown1296@gmail.com"
+              <CopyEmailButton
                 variant="primary"
                 size="lg"
                 className="w-full"
               >
                 Get in touch
-              </Button>
+              </CopyEmailButton>
               <a
                 href="/resume.pdf"
                 target="_blank"

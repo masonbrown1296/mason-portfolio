@@ -43,7 +43,7 @@ export const projects: Project[] = [
       { value: '4', label: 'Health system verticals' },
     ],
     gradientClass: 'gradient-healthcare',
-    year: '2024 — present',
+    year: '2025-present',
     role: 'Contract PMM',
   },
   {
@@ -58,7 +58,7 @@ export const projects: Project[] = [
       { value: '$1.65M', label: 'Projected ARR' },
     ],
     gradientClass: 'gradient-bytesize',
-    year: '2022 — 2024',
+    year: '2024-2025',
     role: 'Director of Marketing',
   },
   {
@@ -73,7 +73,7 @@ export const projects: Project[] = [
       { value: 'E2E', label: 'Ownership' },
     ],
     gradientClass: 'gradient-gamification',
-    year: '2023',
+    year: '2024',
     role: 'Head of Marketing',
   },
   {
@@ -88,7 +88,7 @@ export const projects: Project[] = [
       { value: '35%', label: 'Daily traffic lift' },
     ],
     gradientClass: 'gradient-positioning',
-    year: '2024',
+    year: '2023-2024',
     role: 'Head of Marketing',
   },
 ]

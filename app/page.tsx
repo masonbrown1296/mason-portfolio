@@ -1,7 +1,8 @@
 import Link from 'next/link'
-import { ArrowRight, Mail, ArrowUpRight } from 'lucide-react'
+import { ArrowRight, ArrowUpRight } from 'lucide-react'
 import Container from '@/components/Container'
 import Button from '@/components/Button'
+import CopyEmailButton from '@/components/CopyEmailButton'
 import SectionLabel from '@/components/SectionLabel'
 import FadeIn from '@/components/FadeIn'
 import CredibilityBar from '@/components/CredibilityBar'
@@ -20,13 +21,13 @@ export default function Home() {
     <>
       {/* ════════ HERO ════════ */}
       <section
-        className="gradient-tile gradient-home-hero relative flex items-end min-h-[92vh] pt-[var(--nav-height)]"
+        className="gradient-tile gradient-home-hero relative flex items-end min-h-[min(92vh,900px)] pt-[var(--nav-height)]"
       >
         <Container>
           <div className="py-section-sm lg:py-section-lg">
             <FadeIn trigger="mount" delay={80}>
               <SectionLabel className="text-neutral-700">
-                Marketing leader — Chicago, remote-first
+                Marketing leader. Chicago, remote-first.
               </SectionLabel>
             </FadeIn>
 
@@ -46,15 +47,9 @@ export default function Home() {
 
             <FadeIn trigger="mount" delay={520}>
               <div className="mt-10 flex flex-wrap items-center gap-3">
-                <Button
-                  href="mailto:masonbrown1296@gmail.com"
-                  variant="primary"
-                  size="lg"
-                  icon={<Mail size={16} strokeWidth={1.75} />}
-                  iconPosition="left"
-                >
+                <CopyEmailButton variant="primary" size="lg" showIcon>
                   Get in touch
-                </Button>
+                </CopyEmailButton>
                 <Button
                   href="#work"
                   variant="secondary"

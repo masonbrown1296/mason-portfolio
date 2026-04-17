@@ -103,7 +103,7 @@ export default function ByteSizeCaseStudy() {
                 identity. The list existed on paper. Nobody relied on it.
               </p>
               <p>
-                The audience was 5M+ IT professionals and developers — people
+                The audience was 5M+ IT professionals and developers. People
                 who follow industry news closely, care about technical depth,
                 and have zero tolerance for marketing fluff. If the content
                 respected their time and intelligence, the channel could become
@@ -131,7 +131,7 @@ export default function ByteSizeCaseStudy() {
           <div className="mt-16 grid grid-cols-1 md:grid-cols-12 gap-10 items-start">
             <FadeIn className="md:col-span-7">
               <p className="text-body-lg text-neutral-700">
-                Every element was designed to signal inside-the-community — not
+                Every element was designed to signal inside-the-community, not
                 marketing-department-reaching-into-it. Dot-matrix typography for
                 the wordmark, nodding to early computing. Chip, the 8-bit
                 mascot. Retro hardware imagery grounding the brand in IT
@@ -168,7 +168,7 @@ export default function ByteSizeCaseStudy() {
                   <li className="flex gap-3">
                     <span className="text-ember font-mono">02</span>
                     <span>
-                      Chip the mascot — an 8-bit character with expressive range
+                      Chip the mascot, an 8-bit character with expressive range
                     </span>
                   </li>
                   <li className="flex gap-3">
@@ -270,7 +270,7 @@ export default function ByteSizeCaseStudy() {
                   </div>
                 </div>
                 <p className="mt-5 text-[13px] text-neutral-600">
-                  Six-fold lift, stabilized — not a spike.
+                  Six-fold lift, stabilized. Not a spike.
                 </p>
               </div>
             </FadeIn>
@@ -391,7 +391,7 @@ export default function ByteSizeCaseStudy() {
                     &ldquo;{t}&rdquo;
                   </blockquote>
                   <figcaption className="mt-4 text-label uppercase text-neutral-500">
-                    — ByteSize reader
+                    ByteSize reader
                   </figcaption>
                 </figure>
               </FadeIn>
