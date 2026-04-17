@@ -201,25 +201,28 @@ button:focus-visible {
     radial-gradient(100% 80% at 85% 20%, #f4a988 0%, transparent 60%),
     linear-gradient(180deg, #fff4e8 0%, #faf3ea 100%);
 }
+/* Healthcare — CoverMyMeds orange + pink on deep plum. */
 .gradient-healthcare {
-  background: radial-gradient(100% 80% at 20% 20%, #c03d10 0%, transparent 55%),
-    radial-gradient(110% 80% at 80% 80%, #5a1d08 0%, transparent 60%),
-    linear-gradient(180deg, #9e2f10 0%, #3d1608 100%);
+  background: radial-gradient(100% 80% at 20% 20%, #ef6b2b 0%, transparent 55%),
+    radial-gradient(110% 80% at 80% 80%, #d63479 0%, transparent 60%),
+    linear-gradient(180deg, #4a1228 0%, #1c0710 100%);
 }
+/* ByteSize — Experts Exchange green + metallic silver on deep forest. */
 .gradient-bytesize {
-  background: radial-gradient(100% 80% at 25% 20%, #c8542a 0%, transparent 55%),
-    radial-gradient(100% 80% at 80% 80%, #7d3418 0%, transparent 60%),
-    linear-gradient(180deg, #9e4220 0%, #4a1f0c 100%);
+  background: radial-gradient(100% 80% at 22% 20%, #5ab83c 0%, transparent 55%),
+    radial-gradient(100% 80% at 85% 80%, #9fb0bc 0%, transparent 55%),
+    linear-gradient(180deg, #15201a 0%, #08100a 100%);
 }
 .gradient-gamification {
   background: radial-gradient(100% 80% at 20% 20%, #8e3a7a 0%, transparent 55%),
     radial-gradient(100% 80% at 80% 80%, #2a1f72 0%, transparent 60%),
     linear-gradient(180deg, #6e3a9e 0%, #1e1550 100%);
 }
+/* Positioning — Experts Exchange blue + green on deep navy. */
 .gradient-positioning {
-  background: radial-gradient(100% 80% at 20% 20%, #9a6b28 0%, transparent 55%),
-    radial-gradient(100% 80% at 80% 80%, #503714 0%, transparent 60%),
-    linear-gradient(180deg, #75501f 0%, #2c1d08 100%);
+  background: radial-gradient(100% 80% at 20% 20%, #2b9cd8 0%, transparent 55%),
+    radial-gradient(90% 70% at 85% 80%, #5ab83c 0%, transparent 55%),
+    linear-gradient(180deg, #0c1e38 0%, #040912 100%);
 }
 .gradient-competitive {
   background: radial-gradient(100% 80% at 20% 20%, #5a3fb5 0%, transparent 55%),
