@@ -64,7 +64,7 @@ const principles = [
   },
   {
     title: 'AI is infrastructure, not novelty.',
-    body: 'I don\'t use AI to look clever. I use it to do the work of a team of five while I focus on the strategy no model is going to do for me.',
+    body: 'I don\'t use AI to look clever. I use it to do the work of a team of five while I focus on the strategy. No model is doing that part for me.',
   },
   {
     title: 'Range is real or it\'s nothing.',
