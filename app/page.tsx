@@ -102,7 +102,7 @@ export default function Home() {
               <div>
                 <SectionLabel>Selected Work</SectionLabel>
                 <h2 className="mt-5 text-display-md-fluid text-ink max-w-[20ch]">
-                  Four projects. Each one the deepest I&apos;ve gone.
+                  Four of my favorite projects.
                 </h2>
               </div>
               <Link

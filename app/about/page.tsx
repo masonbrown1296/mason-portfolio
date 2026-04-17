@@ -55,10 +55,6 @@ const chapters = [
 
 const principles = [
   {
-    title: 'Specificity over vagueness, always.',
-    body: 'Numbers before adjectives. $1.65M before "significant." 60% before "industry-leading." If a sentence could live on a stranger\'s portfolio, rewrite it.',
-  },
-  {
     title: 'Say the obvious thing nobody\'s saying.',
     body: 'Every job I\'ve had, I walked in and noticed a thing that was broken that nobody was naming. Then I fixed it. That\'s been the whole career, compressed.',
   },
@@ -154,7 +150,7 @@ export default function AboutPage() {
           <FadeIn>
             <SectionLabel>What I believe</SectionLabel>
             <h2 className="mt-5 text-display-md-fluid text-ink max-w-[22ch]">
-              Five things, enforced in my own work.
+              Four things, enforced in my own work.
             </h2>
           </FadeIn>
 

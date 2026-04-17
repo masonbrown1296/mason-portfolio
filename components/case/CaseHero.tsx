@@ -34,14 +34,14 @@ export default function CaseHero({
       <Container>
         <Link
           href={backHref}
-          className="inline-flex items-center gap-2 text-[14px] font-medium text-white/80 hover:text-white transition-colors duration-micro mb-12"
+          className="flex w-fit items-center gap-2 text-[14px] font-medium text-white/80 hover:text-white transition-colors duration-micro mb-12"
         >
           <ArrowLeft size={16} strokeWidth={1.75} />
           {backLabel}
         </Link>
 
         {Icon && (
-          <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-md bg-white/10 border border-white/20 text-white">
+          <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-md bg-white/10 border border-white/20 text-white">
             <Icon size={26} strokeWidth={1.75} />
           </div>
         )}
