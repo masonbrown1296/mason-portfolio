@@ -1,25 +1,36 @@
+import { cn } from '@/lib/utils'
+
 interface SectionLabelProps {
-  text: string
-  dotColor: string
-  light?: boolean
+  children: React.ReactNode
+  className?: string
+  dotColor?: string
 }
 
-export default function SectionLabel({ text, dotColor, light = false }: SectionLabelProps) {
+/**
+ * Eyebrow label. Uppercase, wide-tracked, label-size. Optionally prefixed
+ * with a small colored dot for section identity.
+ */
+export default function SectionLabel({
+  children,
+  className,
+  dotColor,
+}: SectionLabelProps) {
   return (
-    <div className="flex items-center gap-2 mb-4">
-      <div
-        className="w-2 h-2 rounded-full flex-shrink-0"
-        style={{
-          backgroundColor: dotColor,
-          boxShadow: `0 0 8px 2px ${dotColor}88, 0 0 20px 4px ${dotColor}33`
-        }}
-      />
-      <span
-        className="text-[11px] font-semibold tracking-[0.12em] uppercase font-body"
-        style={{ color: light ? '#8A8480' : '#7A7470' }}
-      >
-        {text}
-      </span>
-    </div>
+    <span
+      className={cn(
+        'inline-flex items-center gap-2',
+        'text-label uppercase text-neutral-500',
+        className
+      )}
+    >
+      {dotColor && (
+        <span
+          className="inline-block h-1.5 w-1.5 rounded-full"
+          style={{ backgroundColor: dotColor }}
+          aria-hidden
+        />
+      )}
+      {children}
+    </span>
   )
 }

@@ -2,89 +2,255 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap");
-
+/* ─────────────────────────────────────────────────────────────
+   Design tokens as CSS variables
+   ───────────────────────────────────────────────────────────── */
 :root {
-  --bg-dark: #0D0C0B;
-  --bg-dark-2: #161513;
-  --bg-light: #F0EAE2;
-  --bg-light-2: #FFFFFF;
-  --text-dark: #F0EBE5;
-  --text-muted: #7A7470;
-  --text-black: #1A1917;
-  --border-dark: #252220;
-  --border-light: #E0DAD4;
+  color-scheme: light;
 
-  --red: #F62624;
-  --teal: #73FDFC;
-  --lime: #2BFE78;
-  --gold: #FAD334;
+  /* Colors */
+  --white: #ffffff;
+  --ink: #0a0a0a;
+  --off-white: #fafaf8;
+
+  --neutral-50: #fafaf8;
+  --neutral-100: #f3f2ee;
+  --neutral-200: #e7e5e0;
+  --neutral-300: #d4d1ca;
+  --neutral-400: #a8a39a;
+  --neutral-500: #7a756b;
+  --neutral-600: #5c5850;
+  --neutral-700: #3f3c36;
+  --neutral-800: #25231f;
+  --neutral-900: #15140f;
+  --neutral-950: #0a0a0a;
+
+  --ember: #d94f1e;
+  --ember-soft: #f4a988;
+  --violet: #6b4fd9;
+
+  /* Radii */
+  --r-sm: 12px;
+  --r-md: 24px;
+  --r-lg: 32px;
+
+  /* Durations */
+  --d-micro: 120ms;
+  --d-standard: 240ms;
+  --d-choreo: 480ms;
+  --d-hero: 800ms;
+
+  /* Easings */
+  --ease-soft: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-natural: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-physics: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Layout */
+  --nav-height: 72px;
+  --max-wide: 1280px;
+  --max-narrow: 720px;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Base resets
+   ───────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 html {
   scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 body {
-  background-color: var(--bg-dark);
-  color: var(--text-dark);
-  font-family: "Inter", sans-serif;
+  background: var(--white);
+  color: var(--ink);
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+  font-weight: 400;
+  font-feature-settings: 'ss01', 'cv11';
 }
 
-/* Dot grid background for dark sections */
-.dot-grid {
-  background-image: radial-gradient(circle, #2E2A27 1.5px, transparent 1.5px);
-  background-size: 20px 20px;
+/* Selection */
+::selection {
+  background: var(--ember);
+  color: var(--white);
 }
 
-/* Glow classes */
-.glow-red {
-  box-shadow: 0 0 8px 2px rgba(246, 38, 36, 0.55),
-              0 0 22px 6px rgba(246, 38, 36, 0.2);
+/* Focus ring — per the interface-details skill, never remove, always visible */
+:focus-visible {
+  outline: 2px solid var(--ember);
+  outline-offset: 2px;
+  border-radius: 2px;
 }
 
-.glow-teal {
-  box-shadow: 0 0 8px 2px rgba(115, 253, 252, 0.55),
-              0 0 22px 6px rgba(115, 253, 252, 0.2);
+a:focus-visible,
+button:focus-visible {
+  outline-offset: 3px;
 }
 
-.glow-lime {
-  box-shadow: 0 0 8px 2px rgba(43, 254, 120, 0.55),
-              0 0 22px 6px rgba(43, 254, 120, 0.2);
+/* Anchored section offset for nav */
+[id] {
+  scroll-margin-top: calc(var(--nav-height) + 24px);
 }
 
-.glow-gold {
-  box-shadow: 0 0 8px 2px rgba(250, 211, 52, 0.55),
-              0 0 22px 6px rgba(250, 211, 52, 0.2);
+/* ─────────────────────────────────────────────────────────────
+   Utilities
+   ───────────────────────────────────────────────────────────── */
+
+/* Fluid display type — responsive without per-breakpoint overrides */
+.text-display-xl-fluid {
+  font-size: clamp(56px, 8.5vw, 96px);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  font-weight: 600;
+}
+.text-display-lg-fluid {
+  font-size: clamp(44px, 6vw, 72px);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  font-weight: 600;
+}
+.text-display-md-fluid {
+  font-size: clamp(36px, 5vw, 56px);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  font-weight: 600;
+}
+.text-display-sm-fluid {
+  font-size: clamp(28px, 3.5vw, 40px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  font-weight: 600;
 }
 
-.glow-white {
-  box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.45),
-              0 0 22px 6px rgba(255, 255, 255, 0.15);
+/* Image inset border — per the layout skill */
+.img-inset-border {
+  box-shadow: inset 0 0 0 1px rgba(10, 10, 10, 0.08);
 }
 
-/* Marquee animation for social proof */
-@keyframes marquee {
-  0% {
-    transform: translateX(0);
+/* Pre-reserve bold width to prevent layout shift on hover weight change.
+   Apply to any element whose bold weight might change on interaction.    */
+.no-weight-shift {
+  display: inline-grid;
+}
+.no-weight-shift::after {
+  content: attr(data-text);
+  font-weight: 600;
+  visibility: hidden;
+  height: 0;
+  grid-area: 1 / 1;
+}
+.no-weight-shift > span {
+  grid-area: 1 / 1;
+}
+
+/* Animated underline for tertiary/text links. Starts at right, slides full */
+.link-underline {
+  position: relative;
+  padding-bottom: 1px;
+}
+.link-underline::after {
+  content: '';
+  position: absolute;
+  left: auto;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  width: 0;
+  background: currentColor;
+  transition: width var(--d-standard) var(--ease-soft);
+}
+.link-underline:hover::after,
+.link-underline:focus-visible::after {
+  left: 0;
+  right: auto;
+  width: 100%;
+}
+
+/* Grainy gradient canvas — reusable container class.
+   Each gradient tile gets its own palette via inline style or modifier.   */
+.gradient-tile {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.gradient-tile::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.35 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  opacity: 0.65;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  z-index: 1;
+}
+.gradient-tile > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Pre-defined gradient palettes — one per site moment. Reference names
+   per Part 3 of the plan.                                                 */
+.gradient-home-hero {
+  background: radial-gradient(120% 80% at 15% 10%, #ffd8b8 0%, transparent 55%),
+    radial-gradient(100% 80% at 85% 20%, #f4a988 0%, transparent 60%),
+    linear-gradient(180deg, #fff4e8 0%, #faf3ea 100%);
+}
+.gradient-healthcare {
+  background: radial-gradient(100% 80% at 20% 20%, #c03d10 0%, transparent 55%),
+    radial-gradient(110% 80% at 80% 80%, #5a1d08 0%, transparent 60%),
+    linear-gradient(180deg, #9e2f10 0%, #3d1608 100%);
+}
+.gradient-bytesize {
+  background: radial-gradient(100% 80% at 25% 20%, #c8542a 0%, transparent 55%),
+    radial-gradient(100% 80% at 80% 80%, #7d3418 0%, transparent 60%),
+    linear-gradient(180deg, #9e4220 0%, #4a1f0c 100%);
+}
+.gradient-gamification {
+  background: radial-gradient(100% 80% at 20% 20%, #8e3a7a 0%, transparent 55%),
+    radial-gradient(100% 80% at 80% 80%, #2a1f72 0%, transparent 60%),
+    linear-gradient(180deg, #6e3a9e 0%, #1e1550 100%);
+}
+.gradient-positioning {
+  background: radial-gradient(100% 80% at 20% 20%, #9a6b28 0%, transparent 55%),
+    radial-gradient(100% 80% at 80% 80%, #503714 0%, transparent 60%),
+    linear-gradient(180deg, #75501f 0%, #2c1d08 100%);
+}
+.gradient-competitive {
+  background: radial-gradient(100% 80% at 20% 20%, #5a3fb5 0%, transparent 55%),
+    radial-gradient(100% 80% at 80% 80%, #1f1638 0%, transparent 60%),
+    linear-gradient(180deg, #3a2d6e 0%, #10091f 100%);
+}
+.gradient-recommendation {
+  background: radial-gradient(100% 80% at 20% 20%, #2f6325 0%, transparent 55%),
+    radial-gradient(100% 80% at 80% 80%, #6a4f18 0%, transparent 60%),
+    linear-gradient(180deg, #3a5a26 0%, #152014 100%);
+}
+.gradient-about {
+  background: radial-gradient(120% 100% at 50% 30%, #f4c89e 0%, transparent 60%),
+    linear-gradient(180deg, #fbeccd 0%, #f2dcb6 100%);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Reduced motion — collapse decorative motion to opacity fades
+   ───────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 120ms !important;
   }
-  100% {
-    transform: translateX(-50%);
+  html {
+    scroll-behavior: auto;
   }
-}
-
-.animate-marquee {
-  animation: marquee 30s linear infinite;
-}
-
-/* Counter animation */
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  .gradient-tile::after {
+    display: none;
   }
 }
