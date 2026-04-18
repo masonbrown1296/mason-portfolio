@@ -1,9 +1,12 @@
 import type { Metadata, Viewport } from 'next'
 import { Plus_Jakarta_Sans } from 'next/font/google'
+import { GoogleTagManager } from '@next/third-parties/google'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import Toast from '@/components/Toast'
 import './globals.css'
+
+const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
@@ -64,6 +67,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={jakarta.variable}>
+      {GTM_ID && <GoogleTagManager gtmId={GTM_ID} />}
       <body>
         <Nav />
         <main id="main">{children}</main>

@@ -5,6 +5,11 @@ out
 next-env.d.ts
 .DS_Store
 
+# Env files — secrets stay local. .env.example is committed.
+.env
+.env.local
+.env.*.local
+
 # Internal planning + skill infra — do not ship
 context/
 interface/
