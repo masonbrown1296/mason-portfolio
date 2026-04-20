@@ -1,9 +1,11 @@
-import { Radar } from 'lucide-react'
+import Image from 'next/image'
+import { Radar, ArrowUpRight } from 'lucide-react'
 import Container from '@/components/Container'
 import SectionLabel from '@/components/SectionLabel'
 import FadeIn from '@/components/FadeIn'
 import ContactBlock from '@/components/ContactBlock'
 import BuildTile from '@/components/BuildTile'
+import Button from '@/components/Button'
 import CaseHero from '@/components/case/CaseHero'
 import PullQuote from '@/components/case/PullQuote'
 import { tools, getTool } from '@/data/projects'
@@ -184,29 +186,54 @@ export default function CompetitiveToolPage() {
         </Container>
       </section>
 
-      {/* ════════ DEMO PLACEHOLDER ════════ */}
+      {/* ════════ LIVE TOOL ════════ */}
       <section className="py-section-lg bg-off-white border-y border-neutral-200">
         <Container>
           <FadeIn>
-            <SectionLabel>The app</SectionLabel>
+            <SectionLabel>Try it</SectionLabel>
             <h2 className="mt-5 text-display-md-fluid text-ink max-w-[22ch]">
-              Live demo is wired up next.
+              The tool is live. Go use it.
             </h2>
             <p className="mt-6 text-body-lg text-neutral-700 max-w-2xl">
-              The app runs in production. An interactive demo or walkthrough
-              lands here next. Happy to walk through it live before then.
+              Running in production on the same hosting stack as this site.
+              Opens in a new tab.
             </p>
           </FadeIn>
 
           <FadeIn delay={80}>
-            <div className="mt-12 rounded-md border border-dashed border-neutral-300 bg-white aspect-[16/9] flex items-center justify-center">
-              <div className="text-center">
-                <p className="text-label uppercase text-neutral-400">
-                  Demo placeholder
-                </p>
-                <p className="mt-3 text-body text-neutral-500">
-                  Interactive walkthrough coming soon
-                </p>
+            <figure className="mt-12 rounded-md overflow-hidden border border-neutral-200 shadow-inset-hairline bg-[#0a0f1e]">
+              <div className="relative aspect-[2586/1476]">
+                <Image
+                  src="/build/competitive/live-shot.png"
+                  alt="Competitive intelligence monitor: live feed of competitor press releases, product launches, and partnerships across healthtech."
+                  fill
+                  sizes="(min-width: 768px) 80vw, 100vw"
+                  className="object-contain"
+                />
+              </div>
+            </figure>
+          </FadeIn>
+
+          <FadeIn delay={120}>
+            <div className="mt-8 rounded-md border border-neutral-200 bg-white p-8 shadow-inset-hairline">
+              <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+                <div className="min-w-0">
+                  <p className="text-label uppercase text-neutral-400 font-mono">
+                    Live URL
+                  </p>
+                  <p className="mt-2 text-heading-sm text-ink break-all">
+                    {tool.liveUrlDisplay}
+                  </p>
+                </div>
+                <Button
+                  variant="primary"
+                  size="lg"
+                  href={tool.liveUrl}
+                  external
+                  icon={<ArrowUpRight size={18} strokeWidth={1.75} />}
+                >
+                  Open the live tool
+                </Button>
               </div>
             </div>
           </FadeIn>

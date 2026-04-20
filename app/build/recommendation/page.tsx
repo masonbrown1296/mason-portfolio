@@ -1,9 +1,11 @@
-import { Sparkles } from 'lucide-react'
+import Image from 'next/image'
+import { Sparkles, ArrowUpRight } from 'lucide-react'
 import Container from '@/components/Container'
 import SectionLabel from '@/components/SectionLabel'
 import FadeIn from '@/components/FadeIn'
 import ContactBlock from '@/components/ContactBlock'
 import BuildTile from '@/components/BuildTile'
+import Button from '@/components/Button'
 import CaseHero from '@/components/case/CaseHero'
 import PullQuote from '@/components/case/PullQuote'
 import { tools, getTool } from '@/data/projects'
@@ -218,30 +220,62 @@ export default function RecommendationToolPage() {
         </Container>
       </section>
 
-      {/* ════════ DEMO PLACEHOLDER ════════ */}
+      {/* ════════ LIVE TOOL ════════ */}
       <section className="py-section-lg bg-white">
         <Container>
           <FadeIn>
-            <SectionLabel>The app</SectionLabel>
+            <SectionLabel>Try it</SectionLabel>
             <h2 className="mt-5 text-display-md-fluid text-ink max-w-[22ch]">
-              Live demo is wired up next.
+              The tool is live. Go use it.
             </h2>
             <p className="mt-6 text-body-lg text-neutral-700 max-w-2xl">
-              The app runs in production against a real content library. An
-              interactive walkthrough lands here next. Happy to demo it live
-              before then.
+              Running in production against a real content library. Opens in a
+              new tab.
             </p>
           </FadeIn>
 
           <FadeIn delay={80}>
-            <div className="mt-12 rounded-md border border-dashed border-neutral-300 bg-off-white aspect-[16/9] flex items-center justify-center">
-              <div className="text-center">
-                <p className="text-label uppercase text-neutral-400">
-                  Demo placeholder
-                </p>
-                <p className="mt-3 text-body text-neutral-500">
-                  Interactive walkthrough coming soon
-                </p>
+            <figure className="mt-12 rounded-md overflow-hidden border border-neutral-200 shadow-inset-hairline bg-white">
+              <div className="relative aspect-[2586/1468]">
+                <Image
+                  src="/build/recommendation/live-shot.png"
+                  alt="Content recommendation engine: form inputs for initiative, buying stage, audience, priority, and trigger context, with a Generate Recommendations button."
+                  fill
+                  sizes="(min-width: 768px) 80vw, 100vw"
+                  className="object-contain"
+                />
+              </div>
+            </figure>
+          </FadeIn>
+
+          <FadeIn delay={120}>
+            <div className="mt-8 rounded-md border border-neutral-200 bg-off-white p-8 shadow-inset-hairline">
+              <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+                <div className="min-w-0">
+                  <p className="text-label uppercase text-neutral-400 font-mono">
+                    Live URL
+                  </p>
+                  <p className="mt-2 text-heading-sm text-ink break-all">
+                    {tool.liveUrlDisplay}
+                  </p>
+                  {tool.accessNote && (
+                    <p className="mt-3 text-body text-neutral-600">
+                      <span className="text-label uppercase text-neutral-400 font-mono mr-2">
+                        Access
+                      </span>
+                      {tool.accessNote}
+                    </p>
+                  )}
+                </div>
+                <Button
+                  variant="primary"
+                  size="lg"
+                  href={tool.liveUrl}
+                  external
+                  icon={<ArrowUpRight size={18} strokeWidth={1.75} />}
+                >
+                  Open the live tool
+                </Button>
               </div>
             </div>
           </FadeIn>

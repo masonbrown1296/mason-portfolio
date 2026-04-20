@@ -31,6 +31,9 @@ export interface Tool {
   stack: string[]
   gradientClass: string
   icon: ToolIcon
+  liveUrl: string
+  liveUrlDisplay: string // hostname-only string shown in UI
+  accessNote?: string // optional hint (e.g. password) surfaced next to the CTA
 }
 
 export const projects: Project[] = [
@@ -105,6 +108,8 @@ export const tools: Tool[] = [
     stack: ['Next.js', 'Claude API', 'Jina Reader', 'Firecrawl', 'Vercel'],
     gradientClass: 'gradient-competitive',
     icon: 'radar',
+    liveUrl: 'https://ci-avenger.vercel.app/',
+    liveUrlDisplay: 'ci-avenger.vercel.app',
   },
   {
     slug: 'recommendation',
@@ -114,6 +119,9 @@ export const tools: Tool[] = [
     stack: ['Azure', 'OpenAI API', 'Next.js'],
     gradientClass: 'gradient-recommendation',
     icon: 'sparkles',
+    liveUrl: 'https://content-recommendation-rho.vercel.app/',
+    liveUrlDisplay: 'content-recommendation-rho.vercel.app',
+    accessNote: 'Password: marketing',
   },
 ]
 
